@@ -1,12 +1,18 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, SET_LOADING } from '../actions/types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, SET_LOADING, TOGGLE_LOGIN } from '../actions/types';
 
 const initialState = {
   items: [],
-  loading: false
+  loading: false,
+  modal: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case TOGGLE_LOGIN:
+      return {
+        ...state,
+        modal: !state.modal
+      }
     case GET_ITEMS:
       return {
         ...state,

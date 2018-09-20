@@ -1,0 +1,70 @@
+const express = require('express');
+const multer = require('multer');
+const router = express.Router();
+
+// Upload photo
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'uploads');
+  },
+  filename: function(req, file, cb) {
+      cb(null, new Date().toISOString().replace(/:/g,'-') + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
+
+// Item Model
+const Book = require('../../models/Books.js');
+
+// @route GET api/books
+// desc GET All books
+// @access Public
+router.get('/', (req, res) => {
+  Book.find()
+    .sort({price: -1})
+    .then(books => res.json(books))
+});
+
+// @route POST api/books
+// desc Create A Post
+// @access Public
+router.post('/', upload.single('productImage'), (req, res) => {
+  console.log(req.file);
+  const newBook = new Book({
+      name: req.body.name,
+      price: req.body.price,
+      author: req.body.author,
+      pagesNumber: req.body.pagesNumber,
+      company: req.body.company,
+      bookImage: req.file.path
+  });
+  newBook.save()
+  .then(book => res.json(book))
+  .catch(err => console.log(err));
+});
+
+// @route DELETE api/books
+// desc Delete An Item
+// @access Public
+router.delete('/:id', (req, res) => {
+  const book = req.params.id;
+  Book.findById(book)
+    .then(book => book.remove(book).then(() => res.json({sucess: true})))
+    .catch(err => res.status(404).json({success: false}));
+});
+module.exports = router;

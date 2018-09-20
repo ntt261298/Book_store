@@ -19,3 +19,45 @@
 .fade-exit-active {
   opacity: 0.01;
 }
+.input-group {
+  width: 60%;
+}
+.body {
+  margin-top: 2rem;
+}
+body {
+  background-color: #e8eaeb;
+}
+.set-background {
+  background-color: #fff;
+}
+main {
+  min-height: calc(100vh - 60px);
+}
+.navs {
+  width: 25%;
+  float: left;
+}
+.card-deck {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.content {
+  width: 70%;
+  float: left;
+  margin-left: 1.5rem;
+}
+.main-footer {
+  width: 100%;
+  height: 60px;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  background: #2b2b2b;
+}
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
