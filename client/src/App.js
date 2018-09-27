@@ -4,12 +4,9 @@ import './App.css';
 import AppNavBar from './components/AppNavBar.js';
 import ShoppingList from './components/ShoppingList.js';
 import ItemModal from './components/ItemModal.js';
-import Menu from './components/Menu.js';
-import Login from './components/Login.js'
-import Navs from './components/Navs.js';
-import Content from './components/Content.js';
-import Cart from './components/Cart.js';
-import Footer from './components/Footer.js';
+import homePage from './components/homePage.js';
+import detailPage from './components/detailPage.js';
+import cartPage from './components/cartPage.js';
 import { Container } from 'reactstrap';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
@@ -32,46 +29,9 @@ class App extends Component {
                 )
               }
           }/>
-          <Route path="/about" exact render={
-              () => {
-                return (
-                  <div>
-                    <header>
-                      <Menu />
-                    </header>
-                    <main className="clearfix">
-                      <Container>
-                        <Login />
-                        <Navs />
-                        <Content />
-                      </Container>
-                    </main>
-                    <footer>
-                      <Footer />
-                    </footer>
-                  </div>
-                )
-              }
-          }/>
-          <Route path="/cart" exact render={
-            () => {
-              return (
-                <div>
-                  <header>
-                    <Menu />
-                  </header>
-                  <main>
-                    <Container>
-                      
-                    </Container>
-                  </main>
-                  <footer>
-                    <Footer />
-                  </footer>
-                </div>
-              )
-            }
-          } />
+          <Route path="/about" exact component={homePage} />
+          <Route path="/cart" exact  component={cartPage}/>
+          <Route path="/detail/:id" exact component={detailPage}/>
         </div>
       </Router>
     );

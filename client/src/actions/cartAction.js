@@ -1,4 +1,4 @@
-import { GET_CART, ADD_TO_CART } from './types';
+import { GET_CART, ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART_ITEM } from './types';
 
 export const getCart = () =>  {
   return {
@@ -6,6 +6,28 @@ export const getCart = () =>  {
   }
 }
 
-export const addToCart = _id => dispatch => {
+// addToCart
+export const addToCart = (id, count) => (
+  {
+    type: ADD_TO_CART,
+    id,
+    count,
+  }
+);
 
-}
+// removeFromCart
+export const removeFromCart = (id) => (
+  {
+    type: REMOVE_FROM_CART,
+    id,
+  }
+);
+
+// updateCartItem
+export const updateCartItem = (id, count) => (
+  {
+    type: UPDATE_CART_ITEM,
+    id,
+    count,
+  }
+);

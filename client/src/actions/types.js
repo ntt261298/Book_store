@@ -6,3 +6,6 @@ export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const GET_BOOKS = 'GET_BOOKS';
 export const GET_CART = 'GET_CART';
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const REMOVE_STOCK_ITEM = 'REMOVE_STOCK_ITEM';
+export const UPDATE_CART_ITEM = 'UPDATE_CART_ITEM';

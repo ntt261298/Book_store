@@ -40,6 +40,15 @@ router.get('/', (req, res) => {
     .then(books => res.json(books))
 });
 
+// @route GET api/books/detail
+// desc GET All books
+// @access Public
+router.get('/detail/:id', (req, res) => {
+  const book = req.params.id;
+  Book.findById(book)
+    .then(book => res.json(book))
+});
+
 // @route POST api/books
 // desc Create A Post
 // @access Public
@@ -58,10 +67,10 @@ router.post('/', upload.single('productImage'), (req, res) => {
   .catch(err => console.log(err));
 });
 
-// @route DELETE api/books
+// @route DELETE api/books/delete
 // desc Delete An Item
 // @access Public
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   const book = req.params.id;
   Book.findById(book)
     .then(book => book.remove(book).then(() => res.json({sucess: true})))

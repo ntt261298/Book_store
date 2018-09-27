@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button, Navbar, NavbarBrand, InputGroup, Input, InputGroupAddon, InputGroupText } from 'reactstrap';
-import { toggleLogin } from '../actions/itemsAction';
+import { toggleLogin } from '../../actions/itemsAction';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 class Menu extends React.Component {
@@ -28,7 +29,9 @@ class Menu extends React.Component {
               color="secondary"
               style={{margin:'0 5px'}}
               onClick={this.onLoginClick}>Login</Button>{' '}
-            <Button color="secondary">Shopping Cart</Button>{' '}
+            <Link to={`/cart`}>
+              <Button color="secondary">Shopping Cart</Button>{' '}
+            </Link>
           </Container>
         </Navbar>
       </div>

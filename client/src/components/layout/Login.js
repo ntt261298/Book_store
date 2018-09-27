@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Input, Label, Form, FormGroup } from 'reactstrap';
-import { toggleLogin } from '../actions/itemsAction';
+import { toggleLogin } from '../../actions/itemsAction';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 

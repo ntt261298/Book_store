@@ -19,33 +19,22 @@
 .fade-exit-active {
   opacity: 0.01;
 }
-.input-group {
-  width: 60%;
-}
 .body {
   margin-top: 2rem;
-}
-body {
-  background-color: #e8eaeb;
 }
 .set-background {
   background-color: #fff;
 }
+
+/* Config Style */
 main {
   min-height: calc(100vh - 60px);
 }
-.navs {
-  width: 25%;
-  float: left;
+body {
+  background-color: #e8eaeb;
 }
-.card-deck {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.content {
-  width: 70%;
-  float: left;
-  margin-left: 1.5rem;
+.input-group {
+  width: 60%;
 }
 .main-footer {
   width: 100%;
@@ -60,4 +49,51 @@ main {
     visibility: hidden;
     display: block;
     clear: both;
+}
+
+/* HomePage Style */
+.navs {
+  width: 25%;
+  float: left;
+}
+.card-deck {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.content {
+  width: 70%;
+  float: left;
+  margin-left: 1.5rem;
+}
+
+/* DetailPage Style */
+.product-image {
+  float: left;
+}
+.img-book {
+  height: 400px;
+}
+.product-cart {
+  width: 60%;
+  float: right;
+  padding: 1rem;
+  height: 400px;
+}
+#quantity {
+  padding: 5px;
+  width: 3rem;
+  text-align: center;
+
+}
+.change-quantity {
+  padding: 5px;
+  width: 2rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.change-quantity:nth-of-type(1) {
+  border-radius: 5px 0 0 5px;
+}
+.change-quantity:nth-of-type(2) {
+  border-radius: 0 5px 5px 0;
 }

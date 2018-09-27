@@ -2,9 +2,10 @@ import React from 'react';
 import { Card, Button, CardImg, CardTitle, CardText, CardDeck,
  CardSubtitle, CardBody } from 'reactstrap';
 import { connect } from 'react-redux';
-import { getBooks} from '../actions/itemsAction';
-import { addToCart} from '../actions/itemsAction';
+import { getBooks} from '../../actions/itemsAction';
+// import { addToCart} from '../actions/cartAction';
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class BookList extends React.Component {
   componentDidMount() {
@@ -22,7 +23,9 @@ class BookList extends React.Component {
         { books.map(({_id, bookImage}) => (
           <CardDeck key={_id}>
             <Card>
-              <CardImg top width="100%" src={`http://localhost:5000/${bookImage}`} alt="Card image cap" />
+              <Link to={'/detail/' + _id}>
+                <CardImg top width="100%" src={`http://localhost:5000/${bookImage}`} alt="Card image cap" />
+              </Link>
               <CardBody>
                 <CardTitle>Card title</CardTitle>
                 <CardSubtitle>Card subtitle</CardSubtitle>
@@ -87,7 +90,7 @@ class BookList extends React.Component {
 
 BookList.propTypes = {
   getBooks: PropTypes.func.isRequired,
-  addToCart: PropTypes.func.isRequired
+  // addToCart: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
