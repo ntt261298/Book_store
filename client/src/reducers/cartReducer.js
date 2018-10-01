@@ -1,15 +1,17 @@
 import {  GET_CART, ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART_ITEM } from '../actions/types';
 
-const initialState = {
-  carts: [],
-};
+const initialState ={
+  carts: []
+}
 
 const cartItem = (state, action) => {
     switch (action.type) {
       case ADD_TO_CART:
         return {
           id: action.id,
-          count: action.count
+          count: action.count,
+          name: action.name,
+          price: action.price
         };
       case REMOVE_FROM_CART:
         return state.id !== action.id;
@@ -38,9 +40,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         carts: [...state.carts, cartItem(undefined, action)]
-      };
+      }
     case REMOVE_FROM_CART:
-      return state.filter(item => cartItem(item, action));
+      return {
+        ...state,
+        carts: state.carts.filter(item => cartItem(item, action))
+      }
     case UPDATE_CART_ITEM:
       return state.map(item => cartItem(item, action));
     default:

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getBooks} from '../../actions/itemsAction';
 import { addToCart } from '../../actions/cartAction';
 import { PropTypes } from 'prop-types';
+import uuid from 'uuid';
 
 class BookDetail extends React.Component {
   state = {
@@ -27,8 +28,8 @@ class BookDetail extends React.Component {
     })
   }
 
-  onAddToCartClick(id) {
-    this.props.addToCart(id, this.state.qty);
+  onAddToCartClick(name, price) {
+    this.props.addToCart(uuid(), this.state.qty, name, price);
   }
 
   render() {
@@ -53,7 +54,7 @@ class BookDetail extends React.Component {
                 <button type="submit" onClick={this.onAddQtyClick.bind(this)} className="change-quantity">+</button>
               </div>
               <div className="item-submit">
-                <Button color="primary" onClick={this.onAddToCartClick.bind(this, _id)}>Add To Cart</Button>
+                <Button color="primary" onClick={this.onAddToCartClick.bind(this, name, price)}>Add To Cart</Button>
               </div>
             </div>
           </div>

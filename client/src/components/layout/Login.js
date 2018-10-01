@@ -8,7 +8,10 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      login: 'active',
+      signup: '',
+      box: ''
     };
 
     this.toggle = this.toggle.bind(this);
@@ -19,6 +22,24 @@ class Login extends React.Component {
 
   toggle() {
     this.props.toggleLogin();
+  }
+
+  signupClick(e) {
+    e.preventDefault();
+    this.setState({
+      login: '',
+      signup: 'active',
+      box: 'second-box'
+    })
+  }
+
+  loginClick(e) {
+    e.preventDefault();
+    this.setState({
+      login: 'active',
+      signup: '',
+      box: ''
+    })
   }
 
   onAddClick() {
@@ -43,22 +64,36 @@ class Login extends React.Component {
 
     this.toggle();
   }
+
   render() {
     return (
       <div>
         <Modal isOpen={this.props.item.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle} className="btn btn-danger">Login</ModalHeader>
-          <ModalBody>
-            <Form onSubmit={this.onSubmit}>
-              <FormGroup>
-                <Label>Username:</Label>
-                <Input type="text" name="username" placeholder="" onChange={this.onChange} />
-                <Label>Password: </Label>
-                <Input type="text" name="password" placeholder="" onChange={this.onChange} />
-                <Button color="primary" style={{marginTop: '1rem'}} block>Submit</Button>
-              </FormGroup>
-            </Form>
-          </ModalBody>
+          <div className="panel">
+            <ul className={`panel__menu ${this.state.box}`} id="menu">
+              <hr />
+              <li onClick={this.loginClick.bind(this)}><a href="#">Login</a></li>
+              <li onClick={this.signupClick.bind(this)}><a href="#">SignUp</a></li>
+            </ul>
+            <div className="panel__wrap">
+              <div className={`panel__box ${this.state.login}`} id="signInBox">
+                <label>Email: </label>
+                  <input type="email" />
+                <label>Password: </label>
+                  <input type="password" />
+                <input type="submit"/>
+              </div>
+              <div className={`panel__box ${this.state.signup}`} id="signUpBox">
+                <label>Email: </label>
+                  <input type="email" />
+                <label>Password: </label>
+                  <input type="password" />
+                <label>Confirm Password: </label>
+                  <input type="password" />
+                <input type="submit"/>
+              </div>
+            </div>
+          </div>
         </Modal>
       </div>
     );

@@ -7,11 +7,13 @@ export const getCart = () =>  {
 }
 
 // addToCart
-export const addToCart = (id, count) => (
+export const addToCart = (id, count, name, price) => (
   {
     type: ADD_TO_CART,
     id,
     count,
+    name,
+    price
   }
 );
 
