@@ -11,7 +11,12 @@ class Login extends React.Component {
       name: '',
       login: 'active',
       signup: '',
-      box: ''
+      box: '',
+      loginusername: '',
+      loginpassword: '',
+      signupusername: '',
+      signuppassword: '',
+      signuprepassword: ''
     };
 
     this.toggle = this.toggle.bind(this);
@@ -65,6 +70,36 @@ class Login extends React.Component {
     this.toggle();
   }
 
+  onLoginUsernameChanged(e) {
+    this.setState({
+      loginusername: e.target.value
+    })
+  }
+
+  onLoginPasswordChanged(e) {
+    this.setState({
+      loginpassword: e.target.value
+    })
+  }
+
+  onSignupUsernameChanged(e) {
+    this.setState({
+      signupusername: e.target.value
+    })
+  }
+
+  onSignupPasswordChanged(e) {
+    this.setState({
+      signuppassword: e.target.value
+    })
+  }
+
+  onReSignupPasswordChanged(e) {
+    this.setState({
+      signuprepassword: e.target.value
+    })
+  }
+
   render() {
     return (
       <div>
@@ -77,19 +112,34 @@ class Login extends React.Component {
             </ul>
             <div className="panel__wrap">
               <div className={`panel__box ${this.state.login}`} id="signInBox">
-                <label>Email: </label>
-                  <input type="email" />
+                <label>Username: </label>
+                  <input
+                    type="email"
+                    value={this.state.loginusername}
+                    onChange={this.onLoginUsernameChanged.bind(this)}/>
                 <label>Password: </label>
-                  <input type="password" />
+                  <input
+                    type="password"
+                    value={this.state.loginpassword}
+                    onChange={this.onLoginPasswordChanged.bind(this)}/>
                 <input type="submit"/>
               </div>
               <div className={`panel__box ${this.state.signup}`} id="signUpBox">
-                <label>Email: </label>
-                  <input type="email" />
+                <label>Username: </label>
+                  <input
+                    type="email"
+                    value={this.state.signupusername}
+                    onChange={this.onSignupUsernameChanged.bind(this)}/>
                 <label>Password: </label>
-                  <input type="password" />
+                  <input
+                    type="password"
+                    value={this.state.signuppassword}
+                    onChange={this.onSignupPasswordChanged.bind(this)}/>
                 <label>Confirm Password: </label>
-                  <input type="password" />
+                  <input
+                    type="password"
+                    value={this.state.resignuppassword}
+                    onChange={this.onReSignupPasswordChanged.bind(this)}/>
                 <input type="submit"/>
               </div>
             </div>
