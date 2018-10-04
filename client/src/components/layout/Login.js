@@ -21,8 +21,6 @@ class Login extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onAddClick = this.onAddClick.bind(this);
   }
 
   toggle() {
@@ -47,27 +45,10 @@ class Login extends React.Component {
     })
   }
 
-  onAddClick() {
-    this.toggle();
-  }
-
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const newItem = {
-      name: this.state.name
-    }
-    if(newItem.name) {
-      this.props.addItem(newItem);
-    }
-
-    this.toggle();
   }
 
   onLoginUsernameChanged(e) {
@@ -100,6 +81,27 @@ class Login extends React.Component {
     })
   }
 
+  // onLogin(e) {
+  //   e.preventDefault();
+  //
+  //   const newItem = {
+  //     name: this.state.name
+  //   }
+  //   if(newItem.name) {
+  //     this.props.addItem(newItem);
+  //   }
+  //
+  //   this.toggle();
+  // }
+
+  onLogin(e) {
+
+  }
+  
+  onSignup() {
+
+  }
+
   render() {
     return (
       <div>
@@ -122,7 +124,7 @@ class Login extends React.Component {
                     type="password"
                     value={this.state.loginpassword}
                     onChange={this.onLoginPasswordChanged.bind(this)}/>
-                <input type="submit"/>
+                <input type="submit" onClick={this.onLogin.bind(this)}/>
               </div>
               <div className={`panel__box ${this.state.signup}`} id="signUpBox">
                 <label>Username: </label>
@@ -140,7 +142,7 @@ class Login extends React.Component {
                     type="password"
                     value={this.state.resignuppassword}
                     onChange={this.onReSignupPasswordChanged.bind(this)}/>
-                <input type="submit"/>
+                <input type="submit" onClick={this.onSignup.bind(this)}/>
               </div>
             </div>
           </div>
