@@ -33,6 +33,9 @@ main {
 body {
   background-color: #e8eaeb;
 }
+.mt-2 {
+  margin-right: 2px;
+}
 .input-group {
   width: 60%;
 }
@@ -50,7 +53,22 @@ body {
     display: block;
     clear: both;
 }
-
+.search-results {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  display: inline-block;
+  z-index: 1;
+}
+.search-results p {
+  padding: 10px;
+  margin-bottom: 0;
+  cursor: pointer;
+  background-color: #fff;
+}
+.search-results p:hover {
+  background-color: #f1f1f1;
+}
 /* HomePage Style */
 .navs {
   width: 25%;
