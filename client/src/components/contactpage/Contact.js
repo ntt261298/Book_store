@@ -23,7 +23,14 @@ class Contact extends React.Component {
     const phone = this.state.Phone;
     const address = this.state.Address;
     e.preventDefault();
+<<<<<<< HEAD
     this.props.userCheckout(token, email, phone, address, this.props.cart.carts);
+=======
+    this.props.cart.carts.map(cart => {
+      console.log(cart);
+      this.props.userCheckout(token, email, phone, address, cart.count, cart.name, cart.price);
+    })
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
   }
 
   render() {

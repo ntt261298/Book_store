@@ -9,7 +9,10 @@ import { PropTypes } from 'prop-types';
 
 class Menu extends React.Component {
   state = {
+<<<<<<< HEAD
     search: '',
+=======
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
     searching: false
   }
   constructor(props) {
@@ -34,12 +37,16 @@ class Menu extends React.Component {
       })
     } else {
       this.setState({
+<<<<<<< HEAD
         search: val,
+=======
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
         searching: true
       });
       this.props.getSearchResults(val);
     }
   }
+<<<<<<< HEAD
 
   onSearchClick() {
     if(this.state.search !== '') {
@@ -55,6 +62,8 @@ class Menu extends React.Component {
     }
   }
 
+=======
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
   render() {
     const token = this.props.account.token;
     const searching = this.state.searching;
@@ -65,7 +74,11 @@ class Menu extends React.Component {
           <Container>
             <NavbarBrand href="/" className="mr-auto">NotMine</NavbarBrand>
             <InputGroup>
+<<<<<<< HEAD
               <Input placeholder="Find product..." onChange={this.showResults.bind(this)} onKeyPress={this.onSearchEnter.bind(this)}/>
+=======
+              <Input placeholder="Find product..." onChange={this.showResults.bind(this)}/>
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
               <InputGroupAddon addonType="append">
                 <Button color="secondary" onClick={this.onSearchClick.bind(this)}>Search</Button>
               </InputGroupAddon>

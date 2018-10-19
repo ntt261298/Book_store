@@ -23,6 +23,7 @@ const TransactionSchema = new Schema({
     type: Date,
     default: Date.now
   },
+<<<<<<< HEAD
   status: {
     type: String,
     default: 'In Processing'
@@ -30,6 +31,23 @@ const TransactionSchema = new Schema({
   cart: {
     type: Array,
     required: true
+=======
+  orderBook: {
+    type: String,
+    required: true
+  },
+  count: {
+    type: Number,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  status: {
+    type: String,
+    default: 'In Processing'
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
   }
 });
 

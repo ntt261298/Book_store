@@ -22,13 +22,23 @@ router.post('/', (req, res) => {
   console.log(req.body.id);
   UserSession.findById(req.body.id)
     .then(Session => {
+<<<<<<< HEAD
       console.log(req.body.carts);
+=======
+      console.log(Session);
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
       const newTransaction = new Transaction({
           usernameID: Session.userId,
           email: req.body.email,
           phone: req.body.phone,
           address: req.body.address,
+<<<<<<< HEAD
           cart: req.body.carts
+=======
+          orderBook: req.body.name,
+          count: req.body.count,
+          price: req.body.price
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
       });
       newTransaction.save()
       .then(transaction => res.json(transaction))

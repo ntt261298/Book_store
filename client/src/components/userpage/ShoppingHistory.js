@@ -6,6 +6,10 @@ import { PropTypes } from 'prop-types';
 
 class ShoppingHistory extends React.Component {
   componentDidMount() {
+<<<<<<< HEAD
+=======
+    console.log("Hi from me");
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
     this.props.getShoppingHistory(this.props.account.token);
   }
 
@@ -31,7 +35,11 @@ class ShoppingHistory extends React.Component {
                         <th className="text-right">Status</th>
                       </tr>
                       {allItems.history.map((item, index) => (
+<<<<<<< HEAD
                         <Item key={index} item={item} className="fade-exit"/>
+=======
+                        <Item key={index} item={item} index={index} className="fade-exit"/>
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
                       ))}
                     </tbody>
                   </table>

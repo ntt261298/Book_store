@@ -3,7 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import homePage from './components/homePage.js';
 import detailPage from './components/detailPage.js';
+<<<<<<< HEAD
 import cartPage from './components/cartPage.js';
+=======
+import cartPage from './components/searchPage.js';
+>>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
 import searchPage from './components/searchPage.js';
 import contactPage from './components/contactPage.js';
 import userPage from './components/userPage.js';
