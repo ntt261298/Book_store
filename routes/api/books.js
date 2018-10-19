@@ -5,7 +5,7 @@ const router = express.Router();
 // Upload photo
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, 'uploads');
+    cb(null, 'public/uploads');
   },
   filename: function(req, file, cb) {
       cb(null, new Date().toISOString().replace(/:/g,'-') + file.originalname);
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+  if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === "image/gif") {
     cb(null, true);
   } else {
     cb(null, false);
@@ -52,15 +52,16 @@ router.get('/detail/:id', (req, res) => {
 // @route POST api/books
 // desc Create A Post
 // @access Public
-router.post('/', upload.single('productImage'), (req, res) => {
-  console.log(req.file);
+router.post('/', upload.any(), (req, res) => {
+  console.log(req.files);
   const newBook = new Book({
       name: req.body.name,
       price: req.body.price,
       author: req.body.author,
       pagesNumber: req.body.pagesNumber,
       company: req.body.company,
-      bookImage: req.file.path
+      bookImage: req.file.path,
+      contentImage: req.file.path
   });
   newBook.save()
   .then(book => res.json(book))

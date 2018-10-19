@@ -1,4 +1,4 @@
-import {  GET_CART, ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART_ITEM } from '../actions/types';
+import {  GET_CART, ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART_ITEM, USER_CHECKOUT } from '../actions/types';
 
 const initialState ={
   carts: []
@@ -48,6 +48,11 @@ export default function(state = initialState, action) {
       }
     case UPDATE_CART_ITEM:
       return state.map(item => cartItem(item, action));
+      case USER_CHECKOUT:
+        return {
+          ...state,
+          carts: state.carts.slice(1)
+        }
     default:
       return state;
   }

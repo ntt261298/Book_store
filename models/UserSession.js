@@ -9,7 +9,7 @@ const UserSessionSchema = new Schema({
   },
   timestamp: {
     type: Date,
-    defaut: Date.now
+    default: Date.now
   },
   isDeleted: {
     type: Boolean,

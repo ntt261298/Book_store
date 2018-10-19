@@ -41,8 +41,7 @@ router.post('/', (req, res, next) => {
       });
     };
     const user = users[0];
-    console.log(user);
-    if(user.password !== password) {
+    if(!user.validPassword(password)) {
       return res.send({
         success: false,
         message: 'Error: Invalid'
@@ -60,7 +59,7 @@ router.post('/', (req, res, next) => {
       }
       return res.send({
         success: true,
-        message: 'Valid Singin',
+        message: 'Login Successful',
         token: doc._id
       })
     })

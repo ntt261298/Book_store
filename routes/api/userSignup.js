@@ -10,9 +10,8 @@ const User = require('../../models/User.js');
 router.post('/', (req, res) => {
   const { body } = req;
   console.log(req.body);
-  const { username, password } = body;
+  const { username, password, repassword } = body;
   // Check if username or password blank
-  console.log(username);
   if(!username) {
     return res.send({
       success: false,
@@ -24,7 +23,13 @@ router.post('/', (req, res) => {
       success: false,
       message: 'Error: Password cannot be blank'
     })
-  }
+  } else if(password !== repassword) {
+      return res.send({
+        success: false,
+        message: 'Error: Wrong confirm password'
+      })
+    }
+
   // Check if username doesn't exist
   User.find({
     username: username
@@ -40,15 +45,16 @@ router.post('/', (req, res) => {
         message: 'Error: Username already exist '
       });
     }
+    const newUser = new User();
+    newUser.username = username;
+    newUser.password = newUser.generateHash(password);
+    newUser.save()
+    .then(user => res.send({
+      success: true,
+      message: 'Signup Successful'
+    }))
+    .catch(err => console.log(err));
   });
-
-  const newUser = new User({
-      username: req.body.username,
-      password: req.body.password
-  });
-  newUser.save()
-  .then(user => res.json(user))
-  .catch(err => console.log(err));
 });
 
 module.exports = router;

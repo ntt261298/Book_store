@@ -8,6 +8,10 @@ const BookSchema = new Schema({
     type: String,
     required: true
   },
+  contentImage: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: true
