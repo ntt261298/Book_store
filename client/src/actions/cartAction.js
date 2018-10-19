@@ -36,23 +36,13 @@ export const updateCartItem = (id, count) => (
 );
 
 // checkoutCartItem
-<<<<<<< HEAD
 export const userCheckout = (id, email, phone, address, carts) => dispatch => {
-=======
-export const userCheckout = (id, email, phone, address, count, name, price) => dispatch => {
->>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
     axios.post('/api/transactions', {
       id,
       email,
       phone,
       address,
-<<<<<<< HEAD
       carts
-=======
-      count,
-      name,
-      price
->>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
     })
       .then(res => {
         dispatch({

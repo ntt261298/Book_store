@@ -16,7 +16,6 @@ const userSignin = require('./routes/api/userSignin.js');
 const userLogout = require('./routes/api/userLogout.js');
 const transactions = require('./routes/api/transactions.js');
 const userHistory = require('./routes/api/userHistory.js');
-<<<<<<< HEAD
 
 // const index = require('./routes/index');
 // const users = require('./routes/users');
@@ -24,8 +23,6 @@ const admin = require('./routes/admin/verify.js');
 // const cate = require('./routes/cate');
 // const product = require('./routes/product');
 // const cart = require('./routes/cart')
-=======
->>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
 
 const app = express();
 
@@ -61,7 +58,6 @@ app.use('/api/account/logout', userLogout);
 app.use('/api/transactions', transactions);
 app.use('/api/user', userHistory);
 app.use('/api/search', search);
-<<<<<<< HEAD
 app.use('/uploads', express.static('public/uploads'));
 app.use(express.static('public'));
 // Admin routes
@@ -72,9 +68,6 @@ app.use('/admin', admin);
 // app.use('/admin/product', product);
 // app.use('/admin/cart', cart);
 // app.use(express.static(path.join(__dirname, 'public')));
-=======
-app.use('/uploads', express.static('uploads'));
->>>>>>> bff872c7537dadff56bfa3f2530985ab65fdffe4
 // Serve static assets if in production
 // if(process.env.NODE_ENV === 'production') {
 //   app.use(express.static('client/build'));
