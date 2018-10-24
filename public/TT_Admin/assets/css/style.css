@@ -5,11 +5,11 @@
 Table of Contents:
 
 General Layout Style
-Page Title and Breadcrumb    
+Page Title and Breadcrumb
 Typography
 Page Loading Progress Bar (PACE)
 Page Top Bar
-Sidebar Main Menu 
+Sidebar Main Menu
 Sidebar User Profile
 Sidebar Fixed Bottom Graphs
 Section or Content Box
@@ -34,7 +34,7 @@ UI Calendar
 Timeline Centered Style
 Timeline Left Aligned Style
 Image Cropper
-Pricing Tables 
+Pricing Tables
 Tocify
 FAQ
 Portfolio gallery
@@ -73,7 +73,7 @@ Form Wizard
 Carousel
 Visibility Animation in Elements (Viewport)
 Widget - Tile Counter
-Widget - Tile Progress widget 
+Widget - Tile Progress widget
 Navigation Bars
 Search page
 Blogs
@@ -203,7 +203,7 @@ section.box.marginBottom0,
 
 
 /*----------------------------------------
-    Page Title and Breadcrumb  
+    Page Title and Breadcrumb
 ------------------------------------------*/
 
 .page-title h1 {
@@ -230,7 +230,7 @@ section.box.marginBottom0,
 
 h1, h2, h3, h4, h5, h6 {
     /*  font-family: Roboto, Helvetica, Arial, sans-serif;*/
-    
+
     margin: 10px 0;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     font-weight: 400;
@@ -701,7 +701,7 @@ a:hover, a:focus {
 .page-topbar li.searchform {
     margin-left: 15px;
     height: 34px;
-} 
+}
 .page-topbar li.searchform .input-group {
     top: 6px;
     width: 30px;
@@ -947,7 +947,7 @@ a:hover, a:focus {
     text-transform: uppercase;
 }
 
-.page-sidebar.chat_shift #main-menu-wrapper .menusection, 
+.page-sidebar.chat_shift #main-menu-wrapper .menusection,
 .page-sidebar.collapseit #main-menu-wrapper .menusection{
     color: transparent;
     height: 1px;
@@ -957,7 +957,7 @@ a:hover, a:focus {
     margin: 10px 8px 10px 8px;
 }
 
-.page-sidebar.chat_shift #main-menu-wrapper .menusection:first-child, 
+.page-sidebar.chat_shift #main-menu-wrapper .menusection:first-child,
 .page-sidebar.collapseit #main-menu-wrapper .menusection:first-child{
     background-color: transparent;
 }
@@ -976,7 +976,7 @@ a:hover, a:focus {
     margin-bottom: 25px;
 }
 
-.page-sidebar.chat_shift .menustats, 
+.page-sidebar.chat_shift .menustats,
 .page-sidebar.collapseit .menustats{
     content: " ";
     height: 50px;
@@ -1423,7 +1423,7 @@ input[type=checkbox], input[type=color], input[type=date], input[type=datetime-l
 }
 
 .input-group.transparent .input-group-addon.input-focus {
-    background-color: #f8f8f8;  
+    background-color: #f8f8f8;
     border: 1px solid #3F51B5;
     border-right: 0px;
 }
@@ -1763,7 +1763,7 @@ ul.states li {
     background-color: #aaaaaa;
 }
 /*------------------------------------
-     Modals 
+     Modals
  ------------------------------------*/
 .modals-area.row{
 }
@@ -2060,7 +2060,7 @@ ul.states li {
     background-color: #9e9e9e;
 }
 /*---------------------------------------------
-  General Animation Settings    
+  General Animation Settings
 ----------------------------------------------*/
 
 .animated-duration-200ms {
@@ -2232,7 +2232,7 @@ ul.states li {
     animation-delay: 2400ms;
 }
 /*---------------------------------------------
-    Tooltips      
+    Tooltips
 ----------------------------------------------*/
 
 .tooltip {
@@ -2383,7 +2383,7 @@ ul.states li {
     border-bottom-color: #9e9e9e;
 }
 /*---------------------------------------------
-    Popovers     
+    Popovers
 ----------------------------------------------*/
 
 .popover {
@@ -3428,7 +3428,7 @@ ul.states li {
     cursor: pointer;
 }
 /*-----------------------------------------
-    Pricing Tables 
+    Pricing Tables
 ------------------------------------------*/
 
 .pricing-tables .price-pack.recommended .head {
@@ -3545,7 +3545,7 @@ blockquote.accent{ border-color: #E91E63; }
     margin-bottom: 10px;
 }
 /*---------------------------------------------
-    Tocify 
+    Tocify
 ----------------------------------------------*/
 
 .tocify li.tocify-item.active, .tocify li.tocify-item.active a, .tocify .nav li.tocify-item:hover, .tocify .nav li.tocify-item:hover a {
@@ -3556,7 +3556,7 @@ blockquote.accent{ border-color: #E91E63; }
     margin-left: 0px;
     margin-right: 0px;
 }
-/*.tocify li.tocify-item.active, 
+/*.tocify li.tocify-item.active,
     .tocify .nav li.tocify-item:hover{
       padding-left: 10px;
       transition: 200ms;
@@ -3595,7 +3595,7 @@ blockquote.accent{ border-color: #E91E63; }
     font-family: 'fontAwesome';
     content: "\f107";
     /* "play" icon */
-    
+
     float: right;
     color: #3F51B5;
     font-size: 18px;
@@ -3636,7 +3636,7 @@ blockquote.accent{ border-color: #E91E63; }
 }
 #portfolio .portfolio-filter > li a.active:after {} #portfolio .portfolio-item {
     /*  width: 33.2%;*/
-    
+
     float: left;
     padding: 5px;
 }
@@ -4431,7 +4431,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     -ms-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
     -o-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
     /* text-shadow: 1px 1px 1px rgba(200,200,200,.1); */
-    
+
     font-weight: 500;
 }
 .loginpage form .input, .loginpage input[type=text] {
@@ -4445,14 +4445,14 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
 .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
     color: #E91E63
     /*#E91E63*/
-    
+
     ;
     background: #fbfbfb;
 }
 .loginpage #nav a, .loginpage a {
     color: rgba(255, 255, 255, 1)
     /*#ffffff*/
-    
+
     ;
     font-size: 15px;
     color: #dddddd;
@@ -4460,37 +4460,37 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
 .loginpage #nav a:hover, .loginpage a:hover, .loginpage #nav a:active, .loginpage a:active {
     color: rgba(255, 255, 255, 1)
     /*#ffffff*/
-    
+
     ;
 }
 .loginpage, .loginpage form label, .loginpage form, .loginpage .message {
     color: rgba(255, 255, 255, 1)
     /*#ffffff*/
-    
+
     ;
 }
 .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
     background-color: rgba(255, 255, 255, 0.6)
     /*#ffffff*/
-    
+
     ;
 }
 .loginpage form .input:hover, .loginpage form input[type=checkbox]:hover, .loginpage input[type=text]:hover, .loginpage form .input:focus, .loginpage form input[type=checkbox]:focus, .loginpage input[type=text]:focus {
     background-color: rgba(255, 255, 255, 0.8)
     /*#ffffff*/
-    
+
     ;
 }
 .loginpage #login_error, .loginpage .message {
     background-color: rgba(255, 255, 255, 0.6)
     /*#ffffff*/
-    
+
     ;
 }
 .loginpage .message, .loginpage .message a, .loginpage #login_error, .loginpage #login_error a {
     color: #E91E63
     /*#E91E63*/
-    
+
     ;
 }
 .register-social {
@@ -5184,7 +5184,7 @@ code {
     display: none;
 }
 /*
-#main-menu-wrapper li a:hover, 
+#main-menu-wrapper li a:hover,
 #main-menu-wrapper li.open a {
 background-color: rgba(63,81,181,1);
 }
@@ -5318,7 +5318,7 @@ border-left: 3px solid transparent;
     -moz-box-shadow: none;
     -o-box-shadow: none;
     -ms-box-shadow: none;
-    
+
 
 }
 .page-sidebar.chat_shift #main-menu-wrapper .wraplist li.open .sub-menu a:hover, .page-sidebar.chat_shift #main-menu-wrapper .wraplist li .sub-menu a:hover, .page-sidebar.collapseit #main-menu-wrapper .wraplist li.open .sub-menu a:hover, .page-sidebar.collapseit #main-menu-wrapper .wraplist li .sub-menu a:hover {
@@ -5478,7 +5478,7 @@ border-left: 3px solid transparent;
     min-height: 300px;
     background-color: #ffffff;
     margin: 0 2px 0 0;
-    float: right;   
+    float: right;
     box-shadow: 0 1px 3px rgba(33,33,33,.2);
     -webkit-box-shadow: 0 1px 3px rgba(33,33,33,.2);
     -moz-box-shadow: 0 1px 3px rgba(33,33,33,.2);
@@ -6659,7 +6659,7 @@ border-left: 3px solid transparent;
     opacity: 1;
 }
 /*------------------------------------------
-    Widget - Tile Counter 
+    Widget - Tile Counter
 ---------------------------------------------*/
 
 .tile-counter {
@@ -6716,7 +6716,7 @@ border-left: 3px solid transparent;
     opacity: .8;
 }
 /*------------------------------------------
-    Widget - Tile Progress widget 
+    Widget - Tile Progress widget
 ---------------------------------------------*/
 
 .tile-progress {
@@ -7968,7 +7968,7 @@ border-left: 3px solid transparent;
             position: fixed;
             right: 260px;
         }
-    
+
         #main-content, .page-chatapi, .page-topbar, .page-sidebar, .page-topbar .logo-area, .page-topbar .quick-area .pull-right, .collapse-wraplist, .profile-info, .wraplist, .chatapi-windows {
             -webkit-transition: 0ms;
             -moz-transition: 0ms;
@@ -8079,18 +8079,18 @@ table.dataTable{
 }
 
 table.dataTable tr.odd td, table.dataTable tr.even td,
-table.dataTable.display tbody tr.even > .sorting_1, 
+table.dataTable.display tbody tr.even > .sorting_1,
 table.dataTable.order-column.stripe tbody tr.even > .sorting_1,
-table.dataTable.display tbody tr.odd > .sorting_1, 
+table.dataTable.display tbody tr.odd > .sorting_1,
 table.dataTable.order-column.stripe tbody tr.odd > .sorting_1{
     background-color: #ffffff;
     border-color: #eeeeee;
 }
 
 table.dataTable tr.odd:hover td, table.dataTable tr.even:hover td,
-table.dataTable.display tbody tr.even:hover > .sorting_1, 
+table.dataTable.display tbody tr.even:hover > .sorting_1,
 table.dataTable.order-column.stripe tbody tr.even:hover > .sorting_1,
-table.dataTable.display tbody tr.odd:hover > .sorting_1, 
+table.dataTable.display tbody tr.odd:hover > .sorting_1,
 table.dataTable.order-column.stripe tbody tr.odd:hover > .sorting_1{
     background-color: #f5f5f5;
 }
@@ -8110,9 +8110,9 @@ table.dataTable thead th, table.dataTable thead td{
 }
 
 .dataTables_wrapper .DTFC_LeftWrapper thead th,
-.DTFC_LeftBodyLiner table.dataTable.row-border tbody th, 
-.DTFC_LeftBodyLiner table.dataTable.row-border tbody td, 
-.DTFC_LeftBodyLiner table.dataTable.display tbody th, 
+.DTFC_LeftBodyLiner table.dataTable.row-border tbody th,
+.DTFC_LeftBodyLiner table.dataTable.row-border tbody td,
+.DTFC_LeftBodyLiner table.dataTable.display tbody th,
 .DTFC_LeftBodyLiner table.dataTable.display tbody td{
     border-right: 0px solid transparent;
 }
@@ -8150,6 +8150,7 @@ div.DTFC_LeftBodyWrapper table.dataTable{
 
 table.dataTable tr td{
     padding: 15px 10px 15px 10px !important;
+    text-align: center;
 }
 
 table.table thead .sorting_desc,

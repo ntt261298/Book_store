@@ -1,10 +1,10 @@
-<% include ../playout/header.ejs %>
+<% include ../layout/header.ejs %>
         <!-- END TOPBAR -->
         <!-- START CONTAINER -->
         <div class="page-container row-fluid container-fluid">
             <!-- SIDEBAR - START -->
 
-                 <% include ../playout/menu.ejs %>
+                 <% include ../layout/menu.ejs %>
 
 
             <!--  SIDEBAR - END -->
@@ -15,7 +15,7 @@
                         <div class="page-title">
                             <div class="pull-left">
                                 <h1 class="title">Dashboard</h1>
-                                <% if(success_msg.info){ success_msg.info}%>
+
                             </div>
                         </div>
                     </div>
@@ -119,4 +119,4 @@
             <!-- END CONTENT -->
             <div class="chatapi-windows ">
             </div>
-<% include ../playout/footer.ejs %>
+<% include ../layout/footer.ejs %>

@@ -32,6 +32,14 @@ const BookSchema = new Schema({
     type: String,
     required: true
   },
+  des: {
+    type: String,
+    required: true
+  },
+  cateId: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = Book = mongoose.model('book', BookSchema);

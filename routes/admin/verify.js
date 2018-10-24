@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
+const Admin = require('../../models/Admin.js');
+const flash = require('connect-flash');
 
-var Admin = require('../../models/Admin.js');
-
-var bcrypt = require('bcrypt-nodejs');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt-nodejs');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 
 function bodauTiengViet(str) {
@@ -28,53 +28,46 @@ router.get('/', checkAdmin, function(req, res, next) {
   res.render('main/index');
 });
 
-router.get('/dang-nhap.html', function(req, res, next) {
-  res.render('login/index');
+router.get('/login', function(req, res, next) {
+  res.render('login/index', {message: req.flash('loginMessage')});
 });
 
 
 
 
-router.post('/dang-nhap.html',
+router.post('/login',
   passport.authenticate('local', { successRedirect: '/admin',
-                                   failureRedirect: '/admin/dang-nhap.html',
+                                   failureRedirect: '/admin/login',
                                    failureFlash: true })
 );
 
-passport.use(new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
-  },
+passport.use('local', new LocalStrategy({
+   passReqToCallback : true
+ },
+   (req, username, password, done) => {
+     Admin.findOne({"username": username}).then(((user) => {
+       if(!user){
+        return done(null, false, req.flash('loginMessage', 'No user found.'));
+       }
+       if(user.password == password) {;
+         return done(null, user);
+       }
 
-  function(username, password, done) {
-      Admin.findOne({username: username}, function(err, username){
-          if(err) throw err;
-          if(username){
-            bcrypt.compare(password, username.password, function(err, user) {
-                if(err) throw err;
-                if(user){
-                     return done(null, username);
-                }else{
-                   return done(null, false, { message: "Wrong Password" });
-                }
-            });
-          }else{
-             return done(null, false, { message: "Username doesn't exist" });
-          }
-      });
-  }
+       else{
+         done(null, false, req.flash('loginMessage', 'Wrong password.'));
+       }
+     }))
+}))
 
-));
-
-passport.serializeUser(function(username, done) {
-
-  done(null, username.id);
+passport.serializeUser((user, done) => {
+  done(null, user);
 });
-
-passport.deserializeUser(function(id, done) {
-  Admin.findById(id, function(err, username) {
-    done(err, username);
-  });
+passport.deserializeUser((user, done) => {
+  Admin.findOne({"username": user.username }).then((user, err) => {
+    if(err)
+      done(err, null);
+    done(null, user);
+  })
 });
 
 
@@ -83,18 +76,17 @@ router.post('/getUser',checkAdmin, function (req, res) {
     res.json(req.user);
 });
 
-router.get('/dang-xuat.html',checkAdmin, function (req, res) {
+router.get('/logout',checkAdmin, function (req, res) {
     req.logout();
-    res.redirect('/admin/dang-nhap.html');
+    res.redirect('/admin/login');
 });
 
 
 function checkAdmin(req, res, next){
-
     if(req.isAuthenticated()){
       next();
     }else{
-      res.redirect('/admin/dang-nhap.html');
+      res.redirect('/admin/login');
     }
 }
 
