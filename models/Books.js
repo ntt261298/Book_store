@@ -36,9 +36,13 @@ const BookSchema = new Schema({
     type: String,
     required: true
   },
-  cateId: {
+  category: {
     type: String,
     required: true
+  },
+  rating: {
+    type: Number,
+    default: 4
   }
 });
 

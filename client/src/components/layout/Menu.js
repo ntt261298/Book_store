@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../style/menu.css';
 import { Container, Button, Navbar, NavbarBrand, InputGroup, Input, InputGroupAddon, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { toggleLogin } from '../../actions/itemsAction';
 import { userLogout } from '../../actions/accountsAction';
@@ -59,40 +60,49 @@ class Menu extends React.Component {
     const token = this.props.account.token;
     const searching = this.state.searching;
     const results = this.props.search.results;
+    const cartLen = this.props.cart.carts.length;
     return (
       <div>
-        <Navbar  color="dark" dark>
-          <Container>
-            <NavbarBrand href="/" className="mr-auto">NotMine</NavbarBrand>
-            <InputGroup>
-              <Input placeholder="Find product..." onChange={this.showResults.bind(this)} onKeyPress={this.onSearchEnter.bind(this)}/>
-              <InputGroupAddon addonType="append">
-                <Button color="secondary" onClick={this.onSearchClick.bind(this)}>Search</Button>
-              </InputGroupAddon>
-              <div className="search-results">
-              {
-                searching ? (
-                  results.map(({_id, name}) => (
-                    <Link to={`/search/${name}`}>
-                      <p  key={_id}>{name}</p>
-                    </Link>
-                  ))
-                ) : null
-              }
-              </div>
-            </InputGroup>
+        <div class="header">
+
+        </div>
+
+        <div class="menu">
+          <div class="logo">
+            <Link to={`/`}>
+              <img src="../image/logo.svg" class="logo-img" alt="" />
+            </Link>
+          </div>
+          <div class="search">
+            <input type="text" placeholder="Find product..." onChange={this.showResults.bind(this)} onKeyPress={this.onSearchEnter.bind(this)}/>
+            <img src="../image/baseline-search-24px.svg" onClick={this.onSearchClick.bind(this)}/>
+          </div>
+          <div className="search-results">
+          {
+            searching ? (
+              results.map(({_id, name}) => (
+                <Link to={`/search/${name}`}>
+                  <p  key={_id}>{name}</p>
+                </Link>
+              ))
+            ) : null
+          }
+          </div>
+
+          <div class="option">
             {
               !token ? (
-                <Button
-                  color="secondary"
-                  style={{margin:'0 5px'}}
-                  onClick={this.onLoginClick}>Login</Button>
+                <div class="user-img">
+                  <img src="../image/baseline-person-24px.svg" onClick={this.onLoginClick}/>
+                </div>
               ) : (
                 <UncontrolledDropdown
                   style={{margin:'0 5px'}}
                   >
                   <DropdownToggle caret>
-                    Hello
+                    <div class="user-img">
+                      <img src="../image/baseline-person-24px.svg" onClick={this.onLoginClick}/>
+                    </div>
                   </DropdownToggle>
                   <DropdownMenu>
                     <Link to='/user'>
@@ -106,12 +116,19 @@ class Menu extends React.Component {
                 </UncontrolledDropdown>
               )
             }
-
             <Link to={`/cart`}>
-              <Button color="secondary">Shopping Cart</Button>{' '}
+              <div class="cart">
+                {
+                  cartLen ? (
+                    <img src="../image/baseline-shopping_cart-notify-24px.svg" alt=""/>
+                  ) : (
+                    <img src="../image/baseline-shopping_cart-24px.svg" alt=""/>
+                  )
+                }
+              </div>
             </Link>
-          </Container>
-        </Navbar>
+          </div>
+        </div>
       </div>
     );
   }
@@ -124,6 +141,7 @@ Menu.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  cart: state.cart,
   item: state.item,
   account: state.account,
   search: state.search

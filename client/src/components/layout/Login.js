@@ -138,7 +138,7 @@ class Login extends React.Component {
                       type="password"
                       value={this.state.loginpassword}
                       onChange={this.onLoginPasswordChanged.bind(this)}/>
-                  <input type="submit" onClick={this.onLogin.bind(this)}/>
+                  <input type="submit" style={{marginTop: '1.5rem'}} onClick={this.onLogin.bind(this)}/>
                 </div>
                 <div className={`panel__box ${this.state.signup}`} id="signUpBox">
                   {
@@ -159,7 +159,7 @@ class Login extends React.Component {
                       type="password"
                       value={this.state.resignuppassword}
                       onChange={this.onReSignupPasswordChanged.bind(this)}/>
-                  <input type="submit" onClick={this.onSignup.bind(this)}/>
+                  <input type="submit" style={{marginTop: '1.5rem'}} onClick={this.onSignup.bind(this)}/>
                 </div>
               </div>
             </div>

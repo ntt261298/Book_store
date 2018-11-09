@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/config.css';
 import './App.css';
 import homePage from './components/homePage.js';
 import detailPage from './components/detailPage.js';

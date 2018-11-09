@@ -6,28 +6,15 @@
 }
 
 /* Config Style */
-main {
-  min-height: calc(100vh - 60px);
-}
 a:hover {
   text-decoration: none;
 }
-body {
-  background-color: #e8eaeb;
-}
+
 .mt-2 {
   margin-right: 2px;
 }
 .input-group {
   width: 60%;
-}
-.main-footer {
-  width: 100%;
-  height: 60px;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  background: #2b2b2b;
 }
 .clearfix:after {
     content: ".";
@@ -51,6 +38,10 @@ body {
 .search-results p:hover {
   background-color: #f1f1f1;
 }
+.dropdown-toggle {
+  background: transparent;
+}
+
 /* HomePage Style */
 .navs {
   width: 25%;

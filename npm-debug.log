@@ -1,18 +1,18 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'server' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'dev' ]
 2 info using npm@3.5.2
 3 info using node@v8.10.0
-4 verbose run-script [ 'preserver', 'server', 'postserver' ]
-5 info lifecycle mern_stack@1.0.0~preserver: mern_stack@1.0.0
-6 silly lifecycle mern_stack@1.0.0~preserver: no script for preserver, continuing
-7 info lifecycle mern_stack@1.0.0~server: mern_stack@1.0.0
-8 verbose lifecycle mern_stack@1.0.0~server: unsafe-perm in lifecycle true
-9 verbose lifecycle mern_stack@1.0.0~server: PATH: /usr/share/npm/bin/node-gyp-bin:/home/truong/Web_ban_sach/node_modules/.bin:/usr/share/npm/bin/node-gyp-bin:/home/truong/Web_ban_sach/node_modules/.bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64//bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64//bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64//bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-10 verbose lifecycle mern_stack@1.0.0~server: CWD: /home/truong/Web_ban_sach
-11 silly lifecycle mern_stack@1.0.0~server: Args: [ '-c', 'nodemon server.js' ]
-12 silly lifecycle mern_stack@1.0.0~server: Returned: code: 1  signal: null
-13 info lifecycle mern_stack@1.0.0~server: Failed to exec server script
-14 verbose stack Error: mern_stack@1.0.0 server: `nodemon server.js`
+4 verbose run-script [ 'predev', 'dev', 'postdev' ]
+5 info lifecycle mern_stack@1.0.0~predev: mern_stack@1.0.0
+6 silly lifecycle mern_stack@1.0.0~predev: no script for predev, continuing
+7 info lifecycle mern_stack@1.0.0~dev: mern_stack@1.0.0
+8 verbose lifecycle mern_stack@1.0.0~dev: unsafe-perm in lifecycle true
+9 verbose lifecycle mern_stack@1.0.0~dev: PATH: /usr/share/npm/bin/node-gyp-bin:/home/truong/Web_ban_sach/node_modules/.bin:/home/truong/.local/bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64//bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/home/truong/.local/bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64//bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/home/truong/.local/bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64//bin:/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+10 verbose lifecycle mern_stack@1.0.0~dev: CWD: /home/truong/Web_ban_sach
+11 silly lifecycle mern_stack@1.0.0~dev: Args: [ '-c', 'concurrently "npm run server" "npm run client"' ]
+12 silly lifecycle mern_stack@1.0.0~dev: Returned: code: 1  signal: null
+13 info lifecycle mern_stack@1.0.0~dev: Failed to exec dev script
+14 verbose stack Error: mern_stack@1.0.0 dev: `concurrently "npm run server" "npm run client"`
 14 verbose stack Exit status 1
 14 verbose stack     at EventEmitter.<anonymous> (/usr/share/npm/lib/utils/lifecycle.js:232:16)
 14 verbose stack     at emitTwo (events.js:126:13)
@@ -25,18 +25,18 @@
 15 verbose pkgid mern_stack@1.0.0
 16 verbose cwd /home/truong/Web_ban_sach
 17 error Linux 4.15.0-34-generic
-18 error argv "/usr/bin/node" "/usr/bin/npm" "run" "server"
+18 error argv "/usr/bin/node" "/usr/bin/npm" "run" "dev"
 19 error node v8.10.0
 20 error npm  v3.5.2
 21 error code ELIFECYCLE
-22 error mern_stack@1.0.0 server: `nodemon server.js`
+22 error mern_stack@1.0.0 dev: `concurrently "npm run server" "npm run client"`
 22 error Exit status 1
-23 error Failed at the mern_stack@1.0.0 server script 'nodemon server.js'.
+23 error Failed at the mern_stack@1.0.0 dev script 'concurrently "npm run server" "npm run client"'.
 23 error Make sure you have the latest version of node.js and npm installed.
 23 error If you do, this is most likely a problem with the mern_stack package,
 23 error not with npm itself.
 23 error Tell the author that this fails on your system:
-23 error     nodemon server.js
+23 error     concurrently "npm run server" "npm run client"
 23 error You can get information on how to open an issue for this project with:
 23 error     npm bugs mern_stack
 23 error Or if that isn't available, you can get their info via:

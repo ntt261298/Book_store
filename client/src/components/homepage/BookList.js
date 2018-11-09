@@ -24,7 +24,7 @@ class BookList extends React.Component {
           <CardDeck key={_id}>
             <Card>
               <Link to={'/detail/' + _id}>
-                <CardImg top width="100%" src={`http://localhost:5000/${bookImage}`} alt="Card image cap" />
+                <CardImg top width="100%" src={`http://localhost:5000/uploads/${bookImage}`} alt="Card image cap" />
               </Link>
               <CardBody>
                 <CardTitle>Card title</CardTitle>

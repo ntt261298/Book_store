@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './layout/Menu.js';
 import Login from './layout/Login.js'
-import Navs from './homepage/Navs.js';
+import Navs from './layout/Navs.js';
 import SearchResults from './searchPage/SearchResults.js';
 import Footer from './layout/Footer.js';
 import { Container } from 'reactstrap';

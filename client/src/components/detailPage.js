@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/config.css';
+import '../style/detail.css';
 import Menu from './layout/Menu.js';
+import Navs from './layout/Navs.js';
 import Login from './layout/Login.js';
 import BookDetail from './detailpage/BookDetail.js';
 import Footer from './layout/Footer.js';
@@ -15,11 +18,10 @@ export default class detailPage extends React.Component {
         <header>
           <Menu />
         </header>
-        <main className="clearfix">
-          <Container>
+        <main className="clearfix main-body">
             <Login />
+            <Navs />
             <BookDetail id={this.props.match.params.id}/>
-          </Container>
         </main>
         <footer>
           <Footer />
