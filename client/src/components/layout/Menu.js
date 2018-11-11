@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../style/menu.css';
-import { Container, Button, Navbar, NavbarBrand, InputGroup, Input, InputGroupAddon, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { toggleLogin } from '../../actions/itemsAction';
 import { userLogout } from '../../actions/accountsAction';
 import { getSearchResults } from '../../actions/searchAction';
@@ -38,20 +38,20 @@ class Menu extends React.Component {
         search: val,
         searching: true
       });
-      this.props.getSearchResults(val);
+      this.props.getSearchResults('name', val);
     }
   }
 
   onSearchClick() {
     if(this.state.search !== '') {
-      window.location.replace(`/search/${this.state.search}`)
+      window.location.replace(`/search/name/${this.state.search}`)
     }
   }
 
   onSearchEnter(e) {
-    if(e.key == 'Enter') {
+    if(e.key === 'Enter') {
       if(this.state.search !== '') {
-        window.location.replace(`/search/${this.state.search}`)
+        window.location.replace(`/search/name/${this.state.search}`)
       }
     }
   }
@@ -63,45 +63,45 @@ class Menu extends React.Component {
     const cartLen = this.props.cart.carts.length;
     return (
       <div>
-        <div class="header">
+        <div className="header">
 
         </div>
 
-        <div class="menu">
-          <div class="logo">
+        <div className="menu">
+          <div className="logo">
             <Link to={`/`}>
-              <img src="../image/logo.svg" class="logo-img" alt="" />
+              <img src="../../image/logo.svg" className="logo-img" alt="" />
             </Link>
           </div>
-          <div class="search">
-            <input type="text" placeholder="Find product..." onChange={this.showResults.bind(this)} onKeyPress={this.onSearchEnter.bind(this)}/>
-            <img src="../image/baseline-search-24px.svg" onClick={this.onSearchClick.bind(this)}/>
+          <div className="search">
+            <input type="text" placeholder="Find product..." onChange={this.showResults.bind(this)} onKeyPress={this.onSearchEnter.bind(this)} alt=""/>
+            <img src="../../image/baseline-search-24px.svg" onClick={this.onSearchClick.bind(this)} alt=""/>
           </div>
           <div className="search-results">
           {
             searching ? (
               results.map(({_id, name}) => (
-                <Link to={`/search/${name}`}>
-                  <p  key={_id}>{name}</p>
-                </Link>
+                <a href={`/search/name/${name}`}>
+                    <p  key={_id}>{name}</p>
+                </a>
               ))
             ) : null
           }
           </div>
 
-          <div class="option">
+          <div className="option">
             {
               !token ? (
-                <div class="user-img">
-                  <img src="../image/baseline-person-24px.svg" onClick={this.onLoginClick}/>
+                <div className="user-img">
+                  <img src="../../image/baseline-person-24px.svg" onClick={this.onLoginClick} alt=""/>
                 </div>
               ) : (
                 <UncontrolledDropdown
                   style={{margin:'0 5px'}}
                   >
                   <DropdownToggle caret>
-                    <div class="user-img">
-                      <img src="../image/baseline-person-24px.svg" onClick={this.onLoginClick}/>
+                    <div className="user-img">
+                      <img src="../../image/baseline-person-24px.svg" onClick={this.onLoginClick}/>
                     </div>
                   </DropdownToggle>
                   <DropdownMenu>
@@ -117,12 +117,12 @@ class Menu extends React.Component {
               )
             }
             <Link to={`/cart`}>
-              <div class="cart">
+              <div className="cart">
                 {
                   cartLen ? (
-                    <img src="../image/baseline-shopping_cart-notify-24px.svg" alt=""/>
+                    <img src="../../image/baseline-shopping_cart-notify-24px.svg" alt=""/>
                   ) : (
-                    <img src="../image/baseline-shopping_cart-24px.svg" alt=""/>
+                    <img src="../../image/baseline-shopping_cart-24px.svg" alt=""/>
                   )
                 }
               </div>

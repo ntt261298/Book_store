@@ -9,13 +9,41 @@ const Book = require('../../models/Books.js');
 // @access Public
 router.get('/', (req, res) => {
   const book = req.query.book;
+  const type = req.query.type;
+  if(type === 'name') {
+    Book.find({
+      name: {
+        $regex: new RegExp(book)
+      }
+    }, {}, (err, data) => {
+      res.json(data);
+    }).limit(10);
+  }
+  if(type === 'category') {
+    Book.find({
+      category: {
+        $regex: new RegExp(book)
+      }
+    }, {}, (err, data) => {
+      res.json(data);
+    }).limit(10);
+  }
+});
+
+
+// @route GET api/search/cate
+// desc GET search category
+// @access Public
+router.get('/category/', (req, res) => {
+  const cate = req.query.cate;
   Book.find({
-    name: {
-      $regex: new RegExp(book)
+    category: {
+      $regex: new RegExp(cate)
     }
   }, {}, (err, data) => {
     res.json(data);
   }).limit(10);
 });
+
 
 module.exports = router;

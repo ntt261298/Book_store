@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import currency from '../../helpers/currency.js';
 
 class Item extends React.Component {

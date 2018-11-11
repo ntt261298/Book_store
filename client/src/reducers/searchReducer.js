@@ -1,7 +1,7 @@
-import { SEARCH_BOOK } from '../actions/types';
+import { SEARCH_BOOK, SEARCH_CATE } from '../actions/types';
 
 const initialState = {
-  results: []
+  results: [],
 };
 
 export default function(state = initialState, action) {
@@ -10,7 +10,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         results: action.payload
-      }
+      };
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './layout/Menu.js';
 import Login from './layout/Login.js'
@@ -6,8 +6,6 @@ import Navs from './layout/Navs.js';
 import SearchResults from './searchPage/SearchResults.js';
 import Footer from './layout/Footer.js';
 import { Container } from 'reactstrap';
-import {BrowserRouter as Router} from 'react-router-dom';
-import Route from 'react-router-dom/Route';
 
 export default class searchPage extends React.Component {
   render() {
@@ -20,7 +18,7 @@ export default class searchPage extends React.Component {
           <Container>
             <Login />
             <Navs />
-            <SearchResults name={this.props.match.params.name}/>
+            <SearchResults name={this.props.match.params.name} type={this.props.match.params.type}/>
           </Container>
         </main>
         <footer>

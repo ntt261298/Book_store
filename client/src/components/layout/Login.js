@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Input, Label, Form, FormGroup } from 'reactstrap';
+import { Modal} from 'reactstrap';
 import { toggleLogin } from '../../actions/itemsAction';
 import { verifyToken, userLogin, userSignup } from '../../actions/accountsAction';
 import { connect } from 'react-redux';
@@ -120,8 +120,8 @@ class Login extends React.Component {
             <div className="panel">
               <ul className={`panel__menu ${this.state.box}`} id="menu">
                 <hr />
-                <li onClick={this.loginClick.bind(this)}><a href="#">Login</a></li>
-                <li onClick={this.signupClick.bind(this)}><a href="#">SignUp</a></li>
+                <li onClick={this.loginClick.bind(this)}><a href="">Login</a></li>
+                <li onClick={this.signupClick.bind(this)}><a href="">SignUp</a></li>
               </ul>
               <div className="panel__wrap">
                 <div className={`panel__box ${this.state.login}`} id="signInBox">

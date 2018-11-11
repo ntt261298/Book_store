@@ -1,40 +1,55 @@
 import React from 'react';
 import '../../style/nav.css';
-import { Container, Nav, NavItem, NavLink } from 'reactstrap';
+import { getCate } from '../../actions/itemsAction';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 
-export default class Navs extends React.Component {
+class Navs extends React.Component {
+  componentDidMount() {
+    this.props.getCate()
+  }
+
   render() {
+    const cate = this.props.book.cate;
+    console.log(cate);
     return (
-        <nav class="nav-bar">
-          <div class="category">
+        <nav className="nav-bar">
+          <div className="category">
             <h2>CATEGORIES</h2>
             <ul>
-              <li><a href="#"></a>Science fiction</li>
-              <li><a href="#"></a>Action and Adventure</li>
-              <li><a href="#"></a>Romance</li>
-              <li><a href="#"></a>Mystery</li>
-              <li><a href="#"></a>Horror</li>
-              <li><a href="#"></a>Health</li>
-              <li><a href="#"></a>Guide</li>
-              <li><a href="#"></a>Children's</li>
-              <li><a href="#"></a>Religion, Spirituality</li>
-              <li><a href="#"></a>History</li>
-              <li><a href="#"></a>Math</li>
+              {
+                cate.map(({_id, name}) => (
+                  <li>
+                    <a href={`/search/category/${name}`}>{name}</a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
-          <div class="price">
+          <div className="price">
             <h2>PRICES</h2>
-            <div class="price-bar">
-              <div class="bar">
-                <div class="circle-price circle-price-1"></div>
-                <div class="circle-price circle-price-2"></div>
+            <div className="price-bar">
+              <div className="bar">
+                <div className="circle-price circle-price-1"></div>
+                <div className="circle-price circle-price-2"></div>
               </div>
             </div>
             <span>$10</span>
-            <span class="price-search"></span>
+            <span className="price-search"></span>
             <span>$50</span>
           </div>
         </nav>
     );
   }
 }
+
+Navs.propTypes = {
+  getCate: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+  book: state.book
+})
+
+export default connect(mapStateToProps, { getCate })(Navs);

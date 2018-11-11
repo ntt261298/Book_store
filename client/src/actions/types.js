@@ -1,6 +1,8 @@
 export const SET_LOADING = 'SET_LOADING';
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const GET_BOOKS = 'GET_BOOKS';
+export const GET_BOOK = 'GET_BOOK';
+export const GET_CATE = 'GET_CATE';
 export const GET_CART = 'GET_CART';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
@@ -13,3 +15,4 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_CHECKOUT = 'USER_CHECKOUT';
 export const USER_HISTORY = 'USER_HISTORY';
 export const SEARCH_BOOK = 'SEARCH_BOOK';
+export const SEARCH_CATE = 'SEARCH_CATE';

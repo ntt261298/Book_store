@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Button } from 'reactstrap';
 import currency from '../../helpers/currency.js';
 import { connect } from 'react-redux';

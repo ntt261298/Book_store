@@ -8,12 +8,10 @@ import cartPage from './components/cartPage.js';
 import searchPage from './components/searchPage.js';
 import contactPage from './components/contactPage.js';
 import userPage from './components/userPage.js';
-import { Container } from 'reactstrap';
 import {Redirect, BrowserRouter as Router} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import { toggleLogin } from './actions/itemsAction';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 
 
 const PrivateRoute = ({ component: Component, token, ...rest }) => (
@@ -34,7 +32,7 @@ class App extends Component {
           <Route path="/" exact component={homePage} />
           <Route path="/cart" exact  component={cartPage}/>
           <Route path="/detail/:id" exact component={detailPage}/>
-          <Route path="/search/:name" exact component={searchPage}/>
+          <Route path="/search/:type/:name" exact component={searchPage}/>
           <PrivateRoute
             path='/contact'
             exact component={contactPage}

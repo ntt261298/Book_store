@@ -2,7 +2,7 @@ import React from 'react';
 import '../../style/detail.css';
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { getBooks} from '../../actions/itemsAction';
+import { getBooks } from '../../actions/itemsAction';
 import { addToCart } from '../../actions/cartAction';
 import { PropTypes } from 'prop-types';
 import uuid from 'uuid';
@@ -14,7 +14,7 @@ class BookDetail extends React.Component {
     active2: ''
   }
   componentDidMount() {
-    this.props.getBooks()
+    this.props.getBooks();
   }
 
   onMinusQtyClick() {
@@ -79,7 +79,7 @@ class BookDetail extends React.Component {
                   {this.state.active1 ? (
                     <img class="image-slide" src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
                   ) : (
-                    <img class="image-slide" src={`http://localhost:5000/${contentImage}`} alt=""/>
+                    <img class="image-slide" src={`http://localhost:5000/uploads/${contentImage}`} alt=""/>
                   )}
                   <div class="circle">
                     <span class={`${this.state.active1} circle-slide`}  onClick={this.active1.bind(this)}></span>

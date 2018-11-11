@@ -5,8 +5,6 @@ import Login from './layout/Login.js'
 import Footer from './layout/Footer.js';
 import Contact from './contactpage/Contact.js';
 import { Container } from 'reactstrap';
-import {BrowserRouter as Router} from 'react-router-dom';
-import Route from 'react-router-dom/Route';
 
 export default class contactPage extends React.Component {
   render() {
