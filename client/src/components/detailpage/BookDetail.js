@@ -67,7 +67,7 @@ class BookDetail extends React.Component {
     const { books } = this.props.book;
     return (
       <div class="main-content">
-        { books.map(({_id, name, author, price, bookImage, rating, category, des, contentImage}) => {if(_id === this.props.id) return (
+        { books.map(({_id, name, author, price, bookImage, rating, category, des, company, contentImage}) => {if(_id === this.props.id) return (
             <div>
               <div class="book-direct">
                 <span>{category}</span>
@@ -291,18 +291,16 @@ class BookDetail extends React.Component {
                           <li>Author</li>
                           <li>Publishing Company</li>
                           <li>Cover</li>
-                          <li>Publish Date</li>
                           <li>SKU</li>
                         </ul>
                       </div>
                       <div class="infor-entity">
                         <ul>
                           <li>NineBook</li>
-                          <li>J.K Rowling</li>
-                          <li>HUST Company</li>
+                          <li>{author}</li>
+                          <li>{company}</li>
                           <li>Soft</li>
-                          <li>08 - 2018</li>
-                          <li>056441fdf65a4ftgw</li>
+                          <li>{_id}</li>
                         </ul>
                       </div>
                     </div>

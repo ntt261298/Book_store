@@ -1,9 +1,9 @@
 /* body style */
-.main-body {
+.detail-body {
   color: var(--light);
   display: grid;
-  grid-gap: 20px;
   padding: 0 6rem;
+  grid-gap: 20px;
   grid-template-columns: repeat(8, 1fr);
   grid-template-areas:
     'nav-bar nav-bar main-content main-content main-content main-content main-content main-content'
@@ -22,6 +22,7 @@
   line-height: 100%;
 }
 .book-direct span {
+  vertical-align: middle;
   display: inline-block;
   overflow: auto;
   padding: 0 0 4px 0;

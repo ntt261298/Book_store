@@ -43,18 +43,9 @@ a:hover {
 }
 
 /* HomePage Style */
-.navs {
-  width: 25%;
-  float: left;
-}
 .card-deck {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-.content {
-  width: 70%;
-  float: left;
-  margin-left: 1.5rem;
 }
 
 /* DetailPage Style */

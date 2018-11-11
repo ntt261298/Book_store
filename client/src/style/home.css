@@ -1,0 +1,61 @@
+/* body style */
+.home-body {
+  color: var(--light);
+  padding: 0 6rem;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-areas:
+    'nav-bar nav-bar content content content content content content'
+}
+
+.nav-bar {
+  grid-area: nav-bar;
+}
+.content {
+  grid-area: content;
+}
+
+.book-list {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'book1 book2 book3'
+    'book4 book5 book6'
+    'book7 book8 book9'
+    'book10 book11 book12'
+}
+.book1 {
+  grid-area: book1;
+}
+.book2 {
+  grid-area: book2;
+}
+.book3 {
+  grid-area: book3;
+}
+.book4 {
+  grid-area: book4;
+}
+.book5 {
+  grid-area: book5;
+}
+.book6 {
+  grid-area: book6;
+}
+.book7 {
+  grid-area: book8;
+}
+.book9 {
+  grid-area: book9;
+}
+.book10 {
+  grid-area: book10;
+}
+.book11 {
+  grid-area: book11;
+}
+.book12 {
+  grid-area: book12;
+}

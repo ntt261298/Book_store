@@ -18,40 +18,12 @@ class SearchResults extends React.Component {
     const results = this.props.search.results;
     return (
       <div className="book-list">
-        { results.map(({_id, bookImage}) => (
-          <CardDeck key={_id}>
+        { results.slice(0, 12).map(({_id, bookImage}, index) => (
+          <CardDeck className={`book${index+1}`} key={_id}>
             <Card>
               <Link to={'/detail/' + _id}>
                 <CardImg top width="100%" src={`http://localhost:5000/uploads/${bookImage}`} alt="Card image cap" />
               </Link>
-              <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
-                <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                <Button >Add to Cart</Button>
-              </CardBody>
-            </Card>
-            <Card>
-              <Link to={'/detail/' + _id}>
-                <CardImg top width="100%" src={`http://localhost:5000/uploads/${bookImage}`} alt="Card image cap" />
-              </Link>
-              <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
-                <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                <Button >Add to Cart</Button>
-              </CardBody>
-            </Card>
-            <Card>
-              <Link to={'/detail/' + _id}>
-                <CardImg top width="100%" src={`http://localhost:5000/uploads/${bookImage}`} alt="Card image cap" />
-              </Link>
-              <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
-                <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                <Button >Add to Cart</Button>
-              </CardBody>
             </Card>
           </CardDeck>
         )) }

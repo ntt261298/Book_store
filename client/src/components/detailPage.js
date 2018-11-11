@@ -15,7 +15,7 @@ export default class detailPage extends React.Component {
         <header>
           <Menu />
         </header>
-        <main className="clearfix main-body">
+        <main className="clearfix detail-body">
             <Login />
             <Navs />
             <BookDetail id={this.props.match.params.id}/>
