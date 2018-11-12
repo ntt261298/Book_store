@@ -12,22 +12,39 @@ class BookList extends React.Component {
     this.props.getBooks()
   }
 
-  // onAddToCart() {
-  //   this.props.addtoCart();
-  // }
+  renderStar(rating) {
+    let star = [];
+    for(let i = 0; i < parseInt(rating); i++) {
+      star.push(<span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>)
+    };
+    if(rating - parseInt(rating)) {
+      star.push(<span class="star"><img src="../image/baseline-half-star_rate-18px.svg" alt=""/></span>)
+    }
+    return star;
+  }
+
   render() {
     const { books } = this.props.book;
     console.log(books);
     return (
-      <div className="book-list">
-        { books.slice(0, 12).map(({_id, bookImage}, index) => (
-          <CardDeck className={`book${index+1}`} key={_id}>
-            <Card>
-              <Link to={'/detail/' + _id}>
-                <CardImg top width="100%" src={`http://localhost:5000/uploads/${bookImage}`} alt="Card image cap" />
-              </Link>
-            </Card>
-          </CardDeck>
+      <div className="book-home">
+        { books.slice(0, 16).map(({_id, bookImage, name, author, price, rating, des}, index) => (
+          <div className={`book-information book${index+1}`} key={_id}>
+              <div className="book-img">
+                <a href={'/detail/' + _id}>
+                  <img className="image-book" src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                </a>
+              </div>
+              <div className="book-inf">
+                <h2 className="name">{name}</h2>
+                {
+                  this.renderStar(rating)
+                }
+                <h5 className="author">{author}</h5>
+                <h1 className="name">${price}</h1>
+                <p className="detail-infor">{des.slice(0, 100)}...</p>
+                </div>
+          </div>
         )) }
       </div>
     );

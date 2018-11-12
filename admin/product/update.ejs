@@ -60,9 +60,19 @@
                                 <div class="form-group">
                                     <label class="form-label" for="field-120334">Image</label>
                                     <span class="desc"></span><br/>
-                                    <img src="<%= product.bookImage%>" width="200px">
+                                    <img src="http://localhost:5000/uploads/<%= product.bookImage%>" width="200px">
                                     <div class="controls">
-                                        <input type="file" id="hinh" value="aaaa" required="required" class="form-control" name="hinh">
+                                        <input type="file" id="bookimg" value="" required="required" class="form-control" name="bookimg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                                <div class="form-group">
+                                    <label class="form-label" for="field-120334">Content Image</label>
+                                    <span class="desc"></span><br/>
+                                    <img src="http://localhost:5000/uploads/<%= product.contentImage%>" width="200px">
+                                    <div class="controls">
+                                        <input type="file" id="contentimg" value="" required="required" class="form-control" name="contentimg">
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +93,7 @@
                                     <div class="controls">
                                         <select class="form-control" id="cate" name="cate">
                                             <% cate.forEach(function(item){ %>
-                                                <option value="<%= item._id%>" <%= (item._id == product.cateId) ? 'selected=\"selected\"' : ''%> ><%= item.name%></option>
+                                                <option value="<%= item.name%>" <%= (item.name == product.category) ? 'selected=\"selected\"' : ''%> ><%= item.name%></option>
                                             <%})%>
                                         </select>
                                     </div>

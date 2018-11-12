@@ -13,6 +13,7 @@
   grid-area: nav-bar;
 }
 .book-list {
+  margin-top: 20px;
   grid-area: booklist;
   display: grid;
   grid-gap: 20px;

@@ -47,7 +47,21 @@ a:hover {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-
+.carousel-indicators li {
+  background-color: var(--dark);
+}
+.carousel-control-prev-icon {
+  background-color: var(--dark);
+  padding: 15px;
+  background-size: 50%;
+  border-radius: 20px;
+}
+.carousel-control-next-icon {
+  background-color: var(--dark);
+  padding: 15px;
+  background-size: 50%;
+  border-radius: 20px;
+}
 /* DetailPage Style */
 .product-image {
   float: left;

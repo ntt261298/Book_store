@@ -84,39 +84,33 @@ router.get('/:id/update-product', function (req, res) {
 
 });
 
-router.post('/:id/update-product',  upload.single('hinh'), function (req, res) {
-	req.checkBody('name', 'Name is empty').notEmpty();
-	//req.checkBody('hinh', 'Hình không được rổng').notEmpty();
-	req.checkBody('price', 'Price must be number').isInt();
-  req.checkBody('pagesNumber', 'Pages Number must be a number').isInt();
-	req.checkBody('des', 'Description is empty').notEmpty();
-  req.checkBody('author', 'Author is empty').notEmpty();
+router.post('/:id/update-product',  cpUpload, function (req, res) {
+  req.checkBody('name', 'Name is empty').notEmpty();
+	req.checkBody('author', 'Author is empty').notEmpty();
   req.checkBody('company', 'Company is empty').notEmpty();
+	req.checkBody('price', 'Price must be a number').isInt();
+	req.checkBody('des', 'Description is empty').notEmpty();
 
-    const errors = req.validationErrors();
+  const errors = req.validationErrors();
 	if (errors) {
-
-		const file = './public/uploads/' + req.file.filename;
-		const fs = require('fs');
-		fs.unlink(file, function(e){
-			if(e) throw e;
-		 });
-
-  		Book.findById(req.params.id).then(function(data){
-			Cate.find().then(function(cate){
-				res.render('product/update',{ errors: errors, cate: cate, product: data});
+    const file1 = './public/uploads/' + req.files.bookimg[0].filename;
+    const file2 = './public/uploads/' + req.files.contentimg[0].filename;
+		  const fs = require('fs');
+			fs.unlink(file1, function(e){
+				if(e) throw e;
 			});
+      fs.unlink(file2, function(e){
+				if(e) throw e;
+			});
+  		Cate.find().then(function(cate){
+			res.render('product/addBook',{errors: errors, cate: cate});
 		});
 	}else{
 		Book.findOne({ _id: req.params.id},  function(err, data){
-			const file = './public/uploads/' + data.bookImage;
-			const fs = require('fs');
-			fs.unlink(file, function(e){
-				if(e) throw e;
-			 });
 			data.name = req.body.name;
-			data.bookImage = req.file.filename;
-			data.cateId = req.body.cate;
+			data.bookImage = req.files.bookimg[0].filename;
+      data.contentImage = req.files.contentimg[0].filename;
+			data.category = req.body.cate;
 			data.des = req.body.des;
 			data.price = req.body.price;
 			data.author = req.body.author;

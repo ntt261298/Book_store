@@ -38,7 +38,7 @@ class Contact extends React.Component {
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="phoneNumber">Password</Label>
+              <Label for="phoneNumber">Phong</Label>
               <Input type="text" name="Phone" onChange={this.onChanged.bind(this)} placeholder="Your phone number..." />
             </FormGroup>
           </Col>
