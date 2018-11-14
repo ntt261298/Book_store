@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getBooks } from '../../actions/itemsAction';
 import { addToCart } from '../../actions/cartAction';
+import { getComment, addComment } from '../../actions/commentAction';
 import { PropTypes } from 'prop-types';
 import uuid from 'uuid';
 
@@ -11,10 +12,14 @@ class BookDetail extends React.Component {
   state = {
     qty: 1,
     active1: 'active',
-    active2: ''
+    active2: '',
+    rating: 3,
+    comment: '',
+    message: ''
   }
   componentDidMount() {
     this.props.getBooks();
+    this.props.getComment();
   }
 
   onMinusQtyClick() {
@@ -62,9 +67,55 @@ class BookDetail extends React.Component {
     return star;
   }
 
+  pickRating(rating) {
+    let star = [];
+    let i = 1;
+    for(i; i <= rating; i++) {
+      star.push(<span key={i}><img class="star-static" onClick={this.setRating.bind(this)} name={i} src="../image/baseline-star_rate-18px.svg" alt=""/></span>)
+    };
+    for(i; i <= 5; i++) {
+      star.push(<span key={i}><img class="star-static" onClick={this.setRating.bind(this)} name={i} src="../image/baseline-star_rate-18px-gray.svg" alt=""/></span>)
+    };
+    return star;
+  }
+
+  setRating(e) {
+    e.preventDefault();
+    this.setState({
+      rating: e.target.name
+    })
+  }
+
+  onChanged(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  onCommentSubmit(_id, token) {
+    if(!token) {
+      this.setState({
+        message: 'You must login to comment'
+      })
+    } else {
+      this.setState({
+        message: ''
+      });
+      this.props.addComment(token, _id, this.state.comment, this.state.rating);
+    }
+  }
+
+  onComment(message) {
+    if(message) {
+      return <div className="alert alert-danger mt-2">{message}</div>
+    }
+    return null;
+  }
+
   render() {
-    console.log(this.state.active1);
+    const token = this.props.account.token;
     const { books } = this.props.book;
+    const { comment } = this.props.comment;
     return (
       <div class="main-content">
         { books.map(({_id, name, author, price, bookImage, rating, category, des, company, contentImage}) => {if(_id === this.props.id) return (
@@ -106,17 +157,33 @@ class BookDetail extends React.Component {
                   <p class="detail-infor">{des.slice(0, 200)}...</p>
                   </div>
                 </div>
-        <div class="comment-nav">
-            <input type="text" placeholder="Your comment about this book..." class="comment-input"/>
-              <input type="submit" value="SEND" class="comment-button"/>
+          <div class="comment-nav">
+            <input type="text" name="comment" placeholder="Your comment about this book..." class="comment-input" onChange={this.onChanged.bind(this)}/>
+            <input type="submit" value="SEND" class="comment-button" onClick={this.onCommentSubmit.bind(this, _id, token)}/>
           </div>
           <div>
-            <span><img class="star-static" src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-            <span><img class="star-static" src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-            <span><img class="star-static" src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-            <span><img class="star-static" src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-            <span><img class="star-static" src="../image/baseline-star_rate-18px.svg" alt=""/></span>
+            { this.pickRating(this.state.rating) }
           </div>
+          { this.onComment(this.state.message)}
+          {
+            comment.slice(0, 5).map(({name, bookID, comment, rating}, index) => {if(bookID === _id) return(
+              <div class="comment">
+                <div class="user user-1">
+                  <img src="../image/account-circle.svg" alt=""/>
+                  <h4>{ name }</h4>
+                  <p>2 days ago</p>
+                </div>
+                <div class="comment-detail">
+                  <div>
+                    { this.renderStar(rating) }
+                  </div>
+                  <p>{ comment }</p>
+                    <img src="../image/thumb-up.svg" alt=""/>
+                    <img src="../image/comment.svg" alt=""/>
+                  </div>
+                </div>
+            )})
+          }
           <div class="comment comment-1">
             <div class="user user-1">
               <img src="../image/account-circle.svg" alt=""/>
@@ -305,43 +372,24 @@ class BookDetail extends React.Component {
                       </div>
                     </div>
                   </div>
-                // </div>
               )})}
             </div>
-          // <div className="product-summary clearfix" key={_id}>
-          //   <div className="product-image">
-          //     <img className="img-book" alt={name} src={`http://localhost:5000/${bookImage}`}></img>
-          //   </div>
-          //   <div className="product-cart">
-          //     <h1>{name}</h1>
-          //     <div className="product-brand">
-          //       <h6>Author: {author}</h6>
-          //       <h3>${price}</h3>
-          //     </div>
-          //     <label>Quantity</label>
-          //     <div className="item-quantity">
-          //       <button type="submit" onClick={this.onMinusQtyClick.bind(this)} className="change-quantity">-</button>
-          //       <input type="text" value={this.state.qty} id="quantity" name="quantity" pattern="[0-9]*" data-line readOnly/>
-          //       <button type="submit" onClick={this.onAddQtyClick.bind(this)} className="change-quantity">+</button>
-          //     </div>
-          //     <div className="item-submit">
-          //       <Button color="primary" onClick={this.onAddToCartClick.bind(this, name, price)}>Add To Cart</Button>
-          //     </div>
-          //   </div>
-          // </div>
-
     );
   }
 }
 
 BookDetail.propTypes = {
   getBooks: PropTypes.func.isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToCart: PropTypes.func.isRequired,
+  addComment: PropTypes.func.isRequired,
+  getComment: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-  book: state.book
+  book: state.book,
+  comment: state.comment,
+  account: state.account
 })
 
 
-export default connect(mapStateToProps, {getBooks, addToCart})(BookDetail);
+export default connect(mapStateToProps, {getBooks, addToCart, addComment, getComment})(BookDetail);

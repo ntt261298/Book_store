@@ -11,6 +11,7 @@ const expressValidator = require('express-validator');
 
 const books = require('./routes/api/books.js');
 const search = require('./routes/api/search.js');
+const comment = require('./routes/api/comment.js');
 const userVerify = require('./routes/api/userVerify.js');
 const userSignup = require('./routes/api/userSignup.js');
 const userSignin = require('./routes/api/userSignin.js');
@@ -75,6 +76,7 @@ app.use(function(req, res, next){
 });
 // User Routes
 app.use('/api/books', books);
+app.use('/api/comment', comment);
 app.use('/api/account/signup', userSignup);
 app.use('/api/account/signin', userSignin);
 app.use('/api/account/verify', userVerify);

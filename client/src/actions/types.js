@@ -16,3 +16,5 @@ export const USER_CHECKOUT = 'USER_CHECKOUT';
 export const USER_HISTORY = 'USER_HISTORY';
 export const SEARCH_BOOK = 'SEARCH_BOOK';
 export const SEARCH_CATE = 'SEARCH_CATE';
+export const GET_COMMENT = 'GET_COMMENT';
+export const ADD_COMMENT = 'ADD_COMMENT';

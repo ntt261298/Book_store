@@ -14,6 +14,14 @@ const CommentSchema = new Schema({
   comment: {
     type: String,
     required: true
+  },
+  rating: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 
