@@ -112,6 +112,23 @@ class BookDetail extends React.Component {
     return null;
   }
 
+  getCommentTime(fromTime, toTime) {
+    let from = new Date(fromTime);
+    let to = new Date();
+    let differenceTravel = to.getTime() - from.getTime();
+    let seconds = Math.floor(differenceTravel / 1000);
+    console.log(seconds);
+    if(seconds < 60) {
+      return seconds + ` seconds ago`;
+    } else if(60 <= seconds && seconds < 3600) {
+      return Math.floor(seconds/60) + ` minutes ago`;
+    } else if(3600 <= seconds && seconds< 86400) {
+      return Math.floor(seconds/3600) + ` hours ago`;
+    } else if(86400 <= seconds && seconds < 2592000) {
+      return Math.floor(seconds/86400) + ` days ago`;
+    } else return Math.floor(seconds/2592000) + ` months ago`;
+  }
+
   render() {
     const token = this.props.account.token;
     const { books } = this.props.book;
@@ -166,12 +183,12 @@ class BookDetail extends React.Component {
           </div>
           { this.onComment(this.state.message)}
           {
-            comment.slice(0, 5).map(({name, bookID, comment, rating}, index) => {if(bookID === _id) return(
+            comment.slice(0, 5).map(({name, bookID, comment, rating, date}, index) => {if(bookID === _id) return(
               <div class="comment">
                 <div class="user user-1">
                   <img src="../image/account-circle.svg" alt=""/>
                   <h4>{ name }</h4>
-                  <p>2 days ago</p>
+                  <p>{ this.getCommentTime(date, Date()) }</p>
                 </div>
                 <div class="comment-detail">
                   <div>

@@ -65,34 +65,5 @@ router.get('/detail/:id', (req, res) => {
     })
 });
 
-// @route POST api/books
-// desc Create A Post
-// @access Public
-router.post('/', upload.any(), (req, res) => {
-  console.log(req.files);
-  const newBook = new Book({
-      name: req.body.name,
-      price: req.body.price,
-      author: req.body.author,
-      pagesNumber: req.body.pagesNumber,
-      company: req.body.company,
-      bookImage: req.file.path,
-      contentImage: req.file.path
-  });
-  newBook.save()
-  .then(book => res.json(book))
-  .catch(err => console.log(err));
-});
-
-// @route DELETE api/books/delete
-// desc Delete An Item
-// @access Public
-router.delete('/delete/:id', (req, res) => {
-  const book = req.params.id;
-  Book.findById(book)
-    .then(book => book.remove(book).then(() => res.json({sucess: true})))
-    .catch(err => res.status(404).json({success: false}));
-});
-
 
 module.exports = router;

@@ -29,9 +29,11 @@ export const userLogin = (username, password) => dispatch => {
     )
 }
 
-export const userSignup = (username, password, repassword) => dispatch => {
+export const userSignup = (username, name, email, password, repassword) => dispatch => {
     axios.post('/api/account/signup', {
       username: username,
+      name: name,
+      email: email,
       password: password,
       repassword: repassword
     }).then(res =>

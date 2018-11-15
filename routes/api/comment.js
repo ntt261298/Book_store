@@ -12,9 +12,22 @@ const Book =require('../../models/Books.js');
 // desc GET All comment
 // @access Public
 router.get('/', (req, res) => {
+  let allComment = [];
   Comment.find()
     .sort({date: -1})
-    .then(comment => res.json(comment))
+    .then(comments => {
+      comments.forEach(comment => {
+      User.findById(comment.userID)
+        .then(user => {
+          const resComment = comment.toObject();
+          resComment.name = user.toObject().name;
+          allComment.push(resComment);
+          if(allComment.length === comments.length) {
+            res.json(allComment);
+          }
+        })
+    });
+  })
 });
 
 // @route POST api/comment
@@ -23,6 +36,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   UserSession.findById(req.body.token)
     .then(Session => {
+      // Comment.find({'userID': Session.userId, 'bookID': req.body.bookID})
+      //   .then
       const newComment = new Comment({
           userID: Session.userId,
           bookID: req.body.bookID,
