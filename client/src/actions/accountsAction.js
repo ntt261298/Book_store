@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY } from './types.js';
+import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, SEND_MAIL, RESET_PASSWORD } from './types.js';
 import { getFromStorage } from '../helpers/localStorage';
 
 export const verifyToken = () => dispatch => {
@@ -59,6 +59,32 @@ export const getShoppingHistory = token => dispatch => {
     .then(res => {
         dispatch({
           type: USER_HISTORY,
+          payload: res.data
+        })
+    })
+}
+
+export const sendEmail = email => dispatch => {
+    axios.post(`/api/account/verify/forgot`, {
+      email: email
+    })
+    .then(res => {
+        dispatch({
+          type: SEND_MAIL,
+          payload: res.data
+        })
+    })
+}
+
+export const resetPassword = (token, pwd, repwd) => dispatch => {
+    axios.post(`/api/account/verify/reset`, {
+      token: token,
+      password: pwd,
+      repassword: repwd
+    })
+    .then(res => {
+        dispatch({
+          type: RESET_PASSWORD,
           payload: res.data
         })
     })

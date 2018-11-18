@@ -8,6 +8,7 @@ import cartPage from './components/cartPage.js';
 import searchPage from './components/searchPage.js';
 import contactPage from './components/contactPage.js';
 import userPage from './components/userPage.js';
+import resetPage from './components/resetPage.js';
 import {Redirect, BrowserRouter as Router} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import { toggleLogin } from './actions/itemsAction';
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/cart" exact  component={cartPage}/>
           <Route path="/detail/:id" exact component={detailPage}/>
           <Route path="/search/:type/:name" exact component={searchPage}/>
+          <Route path="/reset/:token" exact component={resetPage}/>
           <PrivateRoute
             path='/contact'
             exact component={contactPage}

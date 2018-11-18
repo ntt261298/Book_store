@@ -1,8 +1,9 @@
-import { SET_LOADING, TOGGLE_LOGIN } from '../actions/types';
+import { SET_LOADING, TOGGLE_LOGIN, TOGGLE_FORGET } from '../actions/types';
 
 const initialState = {
   loading: false,
-  modal: false
+  modal: false,
+  forgetModal: false
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +12,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         modal: !state.modal
+      }
+    case TOGGLE_FORGET:
+      return {
+        ...state,
+        forgetModal: !state.forgetModal
       }
     case SET_LOADING:
       return {

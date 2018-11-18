@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal} from 'reactstrap';
-import { toggleLogin } from '../../actions/itemsAction';
+import { toggleLogin, toggleForget, } from '../../actions/itemsAction';
 import { verifyToken, userLogin, userSignup } from '../../actions/accountsAction';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
@@ -112,6 +112,11 @@ class Login extends React.Component {
     })
   }
 
+  onForgetClick() {
+    this.props.toggleLogin();
+    this.props.toggleForget();
+  }
+
   render() {
     const loginMessage = this.props.account.loginErr;
     const signupMessage = this.props.account.signupErr;
@@ -142,6 +147,7 @@ class Login extends React.Component {
                       value={this.state.loginpassword}
                       onChange={this.onLoginPasswordChanged.bind(this)}/>
                   <input type="submit" style={{marginTop: '1.5rem'}} onClick={this.onLogin.bind(this)}/>
+                  <p className="forget" onClick={this.onForgetClick.bind(this)}>forget password</p>
                 </div>
                 <div className={`panel__box ${this.state.signup}`} id="signUpBox">
                   {
@@ -185,6 +191,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   toggleLogin: PropTypes.func.isRequired,
+  toggleForget: PropTypes.func.isRequired,
   verifyToken: PropTypes.func.isRequired,
   userLogin: PropTypes.func.isRequired,
   userSignup: PropTypes.func.isRequired
@@ -195,4 +202,4 @@ const mapStateToProps = state => ({
   account: state.account
 })
 
-export default connect(mapStateToProps, { toggleLogin, verifyToken, userLogin, userSignup })(Login);
+export default connect(mapStateToProps, { toggleLogin, toggleForget, verifyToken, userLogin, userSignup })(Login);

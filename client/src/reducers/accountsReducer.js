@@ -1,4 +1,4 @@
-import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY } from '../actions/types.js';
+import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, SEND_MAIL, RESET_PASSWORD } from '../actions/types.js';
 import { setInStorage } from '../helpers/localStorage';
 
 const initialState = {
@@ -6,6 +6,8 @@ const initialState = {
   signupErr: '',
   loginErr: '',
   history: [],
+  resetErr: '',
+  emailErr: ''
 };
 
 export default function(state = initialState, action) {
@@ -47,6 +49,16 @@ export default function(state = initialState, action) {
         return {
           ...state,
           history: action.payload
+        };
+    case RESET_PASSWORD:
+        return {
+          ...state,
+          resetErr: action.payload.resetErr
+        };
+    case SEND_MAIL:
+        return {
+          ...state,
+          emailErr: action.payload.message
         };
     default:
       return state;

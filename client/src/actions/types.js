@@ -1,5 +1,6 @@
 export const SET_LOADING = 'SET_LOADING';
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
+export const TOGGLE_FORGET = 'TOGGLE_FORGET';
 export const GET_BOOKS = 'GET_BOOKS';
 export const GET_BOOK = 'GET_BOOK';
 export const GET_CATE = 'GET_CATE';
@@ -14,6 +15,8 @@ export const USER_SIGNUP = 'USER_SIGNUP';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_CHECKOUT = 'USER_CHECKOUT';
 export const USER_HISTORY = 'USER_HISTORY';
+export const SEND_MAIL = 'SEND_MAIL';
+export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const SEARCH_BOOK = 'SEARCH_BOOK';
 export const SEARCH_CATE = 'SEARCH_CATE';
 export const GET_COMMENT = 'GET_COMMENT';

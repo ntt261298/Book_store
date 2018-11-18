@@ -468,3 +468,17 @@ a {
     }
   }
 }
+
+.forget {
+  float: right;
+  margin-top: 8px;
+  font-size: 0.9em;
+  color: gray;
+}
+.forget:hover {
+  cursor: pointer;
+  color: #778bd9;
+}
+.modal-content {
+  color: #ffffff;
+}

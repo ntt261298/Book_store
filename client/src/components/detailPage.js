@@ -5,6 +5,7 @@ import '../style/detail.css';
 import Menu from './layout/Menu.js';
 import Navs from './layout/Navs.js';
 import Login from './layout/Login.js';
+import ForgetPwd from './layout/ForgetPwd.js';
 import BookDetail from './detailpage/BookDetail.js';
 import Footer from './layout/Footer.js';
 
@@ -17,6 +18,7 @@ export default class detailPage extends React.Component {
         </header>
         <main className="clearfix detail-body">
             <Login />
+            <ForgetPwd />
             <Navs />
             <BookDetail id={this.props.match.params.id}/>
         </main>

@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './layout/Menu.js';
 import Login from './layout/Login.js'
 import Footer from './layout/Footer.js';
-import Contact from './contactpage/Contact.js';
+import Reset from './resetpage/Reset.js';
 import ForgetPwd from './layout/ForgetPwd.js';
 import { Container } from 'reactstrap';
 
-export default class contactPage extends React.Component {
+export default class resetPage extends React.Component {
   render() {
     return (
       <div>
@@ -18,7 +18,7 @@ export default class contactPage extends React.Component {
           <Container>
             <Login />
             <ForgetPwd />
-            <Contact />
+            <Reset token={this.props.match.params.token}/>
           </Container>
         </main>
         <footer>

@@ -1,9 +1,15 @@
 import axios from 'axios';
-import { SET_LOADING, TOGGLE_LOGIN, GET_BOOKS, GET_BOOK, GET_CATE } from './types';
+import { SET_LOADING, TOGGLE_LOGIN, TOGGLE_FORGET, GET_BOOKS, GET_BOOK, GET_CATE } from './types';
 
 export const toggleLogin = () => {
   return {
     type: TOGGLE_LOGIN
+  }
+}
+
+export const toggleForget = () => {
+  return {
+    type: TOGGLE_FORGET
   }
 }
 

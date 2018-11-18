@@ -36,8 +36,19 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   UserSession.findById(req.body.token)
     .then(Session => {
-      // Comment.find({'userID': Session.userId, 'bookID': req.body.bookID})
-      //   .then
+      try {
+        Comment.updateMany(
+          {userID: Session.userId, bookID: req.body.bookID},
+          {
+           $set: { rating: req.body.rating }
+          },
+         { upsert: true
+          }
+        )
+      } catch(e) {
+        console.log(e);
+      }
+
       const newComment = new Comment({
           userID: Session.userId,
           bookID: req.body.bookID,
