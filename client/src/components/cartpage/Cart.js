@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../style/cart.css';
 import { getCart } from '../../actions/cartAction.js';
 import { toggleLogin } from '../../actions/itemsAction.js';
 import Loading from 'react-loading-animation';
@@ -42,50 +43,89 @@ class Cart extends React.Component {
     console.log(allcart);
     console.log(this.state.message);
     // if (isLoading) return <div className='loading'><Loading /></div>;
-    if(allcart.carts.length === 0) return <h2>You have not bought something yet...</h2>;
+    // if(allcart.carts.length === 0) return <h2>You have not bought something yet...</h2>;
     return (
-        <div className="container-mini">
-          <div className="cart">
-              <div>
-                <h2>Your Cart Items</h2>
-                  <table className="table table-hover checkout">
-                    <tbody>
-                      <tr>
-                        <th className="text-center"></th>
-                        <th className="text-center">No.</th>
-                        <th className="text-center">Name</th>
-                        <th className="text-center">Qty.</th>
-                        <th className="text-right">Price</th>
-                        <th className="text-right">Total</th>
-                      </tr>
-                      {allcart.carts.map((item, index) => (
-                        <CartItem key={index} item={item} index={index} className="fade-exit"/>
-                      ))}
-                      <tr>
-                        <th colSpan="3">Total</th>
-                        <th className="text-center"></th>
-                        <th></th>
-                        <th className="text-right price">
-                          { currency(total(allcart)) }
-                        </th>
-                      </tr>
-                    </tbody>
-                  </table>
-                  {
-                    !token ? (
-                      <div>
-                        <button className="btn" onClick={this.onCheckoutClick.bind(this, token)}>Checkout</button>
-                      </div>
-                    ) : (
-                      <Link to="/contact" >
-                        <button className="btn">Checkout</button>
-                      </Link>
-                    )
-                  }
-                  {this.onCheckout(this.state.message)}
+
+      <div class="main-content">
+      <div class="between-information">
+        <div class="book-cart">
+          <div class="book-1">
+            <div class="image-book-1">
+              <img src="../image/harry-book.jpg" alt="" />
+            </div>
+            <div class="quickview-book-1">
+              <span>Harry Potter and the Deathly Hallows</span>
+              <h5>J.K Rowling</h5>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span><br/>
+              <span class="library-add" ><img src="../image/outline-library_add-24px.svg" /></span>
+              <span class="remove-book" ><img src="../image/outline-remove_shopping_cart-24px.svg"/></span>
+            </div>
+            <span class="price-1">$50</span>
+            <div class="change-quantity-1">
+              <img src="../image/minus.svg" alt=""/>
+              <span>3</span>
+              <img src="../image/plus.svg" alt=""/>
+              <span>$150</span>
+            </div>
+          </div>
+          <div class="book-2">
+            <div class="image-book-2">
+              <img src="../image/codeDao.gif" alt=""/>
+            </div>
+            <div class="quickview-book-2">
+              <span>Code Dạo Kí Sự Lập trình viên đâu phải chỉ biết code</span>
+              <h5>Phạm Huy Hoàng</h5>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span><br/>
+              <span class="library-add" ><img src="../image/outline-library_add-24px.svg"/></span>
+              <span class="remove-book" ><img src="../image/outline-remove_shopping_cart-24px.svg"/></span>
+            </div>
+            <span class="price-2">$10</span>
+            <div class="change-quantity-2">
+              <span class="minus"><img src="../image/minus.svg" alt=""/></span>
+              <span>2</span>
+              <span class="plus"><img src="../image/plus.svg" alt=""/></span>
+              <span>$20</span>
+            </div>
+          </div>
+          <div class="book-3">
+            <div class="image-book-3">
+              <img src="../image/tuoiTre.jpg" alt=""/>
+            </div>
+            <div class="quickview-book-3">
+              <span>Tuổi trẻ đáng giá bao nhiêu</span>
+              <h5>Rosie Nguyễn</h5>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/full-star.png" alt=""/></span>
+              <span class="star"><img src="../image/half-star.png" alt=""/></span><br/>
+              <span class="library-add" ><img src="../image/outline-library_add-24px.svg"/></span>
+              <span class="remove-book" ><img src="../image/outline-remove_shopping_cart-24px.svg"/></span>
+            </div>
+            <span clas="price-3">$20</span>
+            <div class="change-quantity-3">
+              <img src="../image/minus.svg" alt=""/>
+              <span>1</span>
+              <img src="../image/plus.svg" alt=""/>
+              <span>$20</span>
             </div>
           </div>
         </div>
+      </div>
+      <div class="result">
+        <h2>Total : $190</h2>
+        <input type="submit"  value="Buy"/>
+        <input type="submit"  value="Send gift"/>
+      </div>
+    </div>
     );
   }
 };

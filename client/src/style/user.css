@@ -1,0 +1,42 @@
+.htr-grid-container {
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: 8.33% 20.83% 8.33% 10% auto 8.33% 10% 8.33%;
+    grid-template-rows: 100px 120px 120px 120px auto;
+    grid-gap: 0px;
+}
+
+.merged-row-1 {
+    grid-row: 2/5;
+}
+
+.prf-navbar {
+  display: block;
+}
+.prf-navbar:hover {
+  color: #00CB83;
+}
+
+.htr-properties {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 60px 0 0 0;
+}
+
+.htr-order-id {
+    font-size: 18px;
+    color: #3B86FF;
+    margin: 30px 0 0 0;
+    width: 75%;
+    height: 25px;
+}
+
+.htr-properties-value {
+    font-size: 18px;
+    color: #bbbbbb;
+    margin: 30px 0 0 0;
+    width: 75%;
+    height: 25px;
+    word-wrap: break-word;
+}

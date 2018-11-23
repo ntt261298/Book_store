@@ -28,6 +28,15 @@ router.get('/', (req, res) => {
       res.json(data);
     }).limit(10);
   }
+  if(type === 'price') {
+    let start = parseInt(book[0] + book[1]);
+    let finish = parseInt(book[3] + book[4]) + 1;
+    Book.find({
+      price: { $gt: start, $lt: finish}
+    }, {}, (err, data) => {
+      res.json(data)
+    }).limit(10);
+  }
 });
 
 

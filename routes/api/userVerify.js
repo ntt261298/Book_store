@@ -33,10 +33,14 @@ router.get('/', (req, res, next) => {
         message: 'Error: Invalid'
       })
     } else {
-      return res.send({
-        success: true,
-        message: 'Good'
-      })
+      User.findById(sessions[0].userId)
+        .then(user => {
+          return res.send({
+            success: true,
+            name: user.name,
+            message: 'Good'
+          })
+        })
     }
   })
 })

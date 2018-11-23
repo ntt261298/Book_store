@@ -12,11 +12,11 @@
   list-style-type: none;
   margin-left: 0;
   line-height: 1.5rem;
+  color: var(--light);
 }
-.category ul li:hover {
+a:hover {
   cursor: pointer;
-  color: var(--gray);
-  font-weight: bold;
+  color: #00CB83;
 }
 .bar {
   width: 200px;

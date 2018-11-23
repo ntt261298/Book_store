@@ -7,7 +7,8 @@ const initialState = {
   loginErr: '',
   history: [],
   resetErr: '',
-  emailErr: ''
+  emailErr: '',
+  name: ''
 };
 
 export default function(state = initialState, action) {
@@ -16,6 +17,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         token: action.payload,
+        name: action.name
       };
     case USER_LOGIN: {
       if(!action.payload.success)

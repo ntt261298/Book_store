@@ -10,7 +10,8 @@ export const verifyToken = () => dispatch => {
         if(res.data.success)
           dispatch({
             type: VERIFY_TOKEN,
-            payload: token
+            payload: token,
+            name: res.data.name
           })
         }
       )

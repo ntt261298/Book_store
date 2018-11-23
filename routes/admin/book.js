@@ -65,7 +65,8 @@ router.post('/add-product', checkAdmin, cpUpload, function (req, res) {
 			price: req.body.price,
       author: req.body.author,
 			pagesNumber: req.body.pagesNumber,
-      company: req.body.company
+      company: req.body.company,
+      videoId: req.body.videoId
 		});
 
 		book.save().then(function(){
@@ -116,6 +117,7 @@ router.post('/:id/update-product',  cpUpload, function (req, res) {
 			data.author = req.body.author;
       data.pagesNumber = req.body.pagesNumber;
       data.company = req.body.company
+      data.videoId = req.body.videoId
 
 			data.save();
 				req.flash('success_msg', 'Modify Successful');

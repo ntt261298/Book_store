@@ -43,6 +43,9 @@ const BookSchema = new Schema({
   rating: {
     type: Number,
     default: 4
+  },
+  videoId: {
+    type: String
   }
 });
 

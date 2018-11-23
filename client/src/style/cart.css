@@ -1,0 +1,33 @@
+/* .main-content {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 75% 25%;
+  grid-column-gap: 100px;
+  grid-template-areas:
+      'between-information result'
+}
+.book-cart {
+  padding: 1rem 0;
+  line-height: 100%;
+}
+.book-1 {
+  display: grid;
+  grid-template-columns: 20% 50% 10% 20%;
+  grid-column-gap: 25px;
+  grid-template-areas:
+    'image-book-1 quickview-book-1 price-1 change-quantity-1'
+}
+.book-2 {
+  display: grid;
+  grid-template-columns: 20% 50% 10% 20%;
+  grid-column-gap: 25px;
+  grid-template-areas:
+    'image-book-2 quickview-book-2 price-2 change-quantity-2'
+}
+.book-3 {
+  display: grid;
+  grid-template-columns: 20% 50% 10% 20%;
+  grid-column-gap: 25px;
+  grid-template-areas:
+    'image-book-3 quickview-book-3 pricec-3 change-quantity-3'
+} */

@@ -35,9 +35,17 @@ class Navs extends React.Component {
                 <div className="circle-price circle-price-2"></div>
               </div>
             </div>
-            <span>$10</span>
-            <span className="price-search"></span>
-            <span>$50</span>
+            <ul>
+              <li>
+                <a href={`/search/price/00-10`}>0$ - 10$</a>
+              </li>
+              <li>
+                <a href={`/search/price/10-20`}>10$ - 20$</a>
+              </li>
+              <li>
+                <a href={`/search/price/20-30`}>20$ - 30$</a>
+              </li>
+            </ul>
           </div>
         </nav>
     );

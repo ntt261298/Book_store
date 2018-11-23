@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../style/detail.css';
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
+import YouTube from 'react-youtube';
 import { getBooks } from '../../actions/itemsAction';
 import { addToCart } from '../../actions/cartAction';
 import { getComment, addComment } from '../../actions/commentAction';
@@ -129,13 +129,25 @@ class BookDetail extends React.Component {
     } else return Math.floor(seconds/2592000) + ` months ago`;
   }
 
+  _onReady(event) {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
+  }
+
   render() {
     const token = this.props.account.token;
     const { books } = this.props.book;
     const { comment } = this.props.comment;
+    const opts = {
+     height: '390',
+     width: '640',
+     playerVars: {
+       autoplay: 1
+     }
+   };
     return (
       <div class="main-content">
-        { books.map(({_id, name, author, price, bookImage, rating, category, des, company, contentImage}) => {if(_id === this.props.id) return (
+        { books.map(({_id, name, author, price, bookImage, rating, category, des, company, contentImage, videoId}) => {if(_id === this.props.id) return (
             <div>
               <div class="book-direct">
                 <span>{category}</span>
@@ -174,6 +186,18 @@ class BookDetail extends React.Component {
                   <p class="detail-infor">{des.slice(0, 200)}...</p>
                   </div>
                 </div>
+
+                { videoId ? (
+                  <div>
+                    <h1>Review</h1>
+                    <YouTube
+                      videoId={videoId}
+                      opts={opts}
+                      onReady={this._onReady}
+                    />
+                  </div>
+                ) : null }
+
           <div class="comment-nav">
             <input type="text" name="comment" placeholder="Your comment about this book..." class="comment-input" onChange={this.onChanged.bind(this)}/>
             <input type="submit" value="SEND" class="comment-button" onClick={this.onCommentSubmit.bind(this, _id, token)}/>

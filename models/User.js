@@ -20,6 +20,15 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  gender: {
+    type: Boolean
+  },
+  birthday: {
+    type: Date
+  },
+  address: {
+    type: String
+  },
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });
