@@ -29,22 +29,26 @@ class User extends React.Component {
               <img class="prf-avt" style={{width: '80px'}} src="../image/account-circle.svg" />
               <p class="prf-p" style={{marginTop: '15px', fontWeight: 'bold'}}>{allItems.name}</p>
           </div>
-          <div class="htr-properties">
-              Order ID
-          </div>
-          <div class="htr-properties">
-              Date
-          </div>
-          <div class="htr-properties">
-              Products
-          </div>
-          <div class="htr-properties">
-              Price
-          </div>
-          <div class="htr-properties" >
-              Status
-          </div>
-          <div></div>
+          { allItems.history.length ? (
+            <React.Fragment>
+              <div class="htr-properties">
+                  Order ID
+              </div>
+              <div class="htr-properties">
+                  Date
+              </div>
+              <div class="htr-properties">
+                  Products
+              </div>
+              <div class="htr-properties">
+                  Price
+              </div>
+              <div class="htr-properties" >
+                  Status
+              </div>
+              <div></div>
+            </React.Fragment>
+          ) : <h2 style={{wordWrap: 'normal', marginTop:'30px'}}>You have not bought something yet</h2> }
           <div class="merged-row-1">
               <a class="prf-navbar" style={{marginTop: '30px' }} href="information.html">
                   <img src="../image/baseline-person-24px-white.svg" style={{paddingRight: '20px'}}/>
@@ -84,7 +88,7 @@ class User extends React.Component {
                 <div></div>
               </React.Fragment>
             ))
-          ) : (<h2>You have not bought something yet...</h2>) }
+          ) : null }
       </div>
 
     );

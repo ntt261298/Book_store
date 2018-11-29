@@ -138,12 +138,16 @@ router.get('/:id/delete-product', checkAdmin,  function (req, res) {
 	// 	res.redirect('/admin/product/danh-sach.html');
 	// });
 
-	Product.findById(req.params.id, function(err, data){
-		const file = './public/uploads/' + data.img;
+	Book.findById(req.params.id, function(err, data){
+		const file1 = './public/uploads/' + data.bookImage;
+    const file2 = './pubic/uploads/' + data.contentImage;
 		const fs = require('fs');
-		fs.unlink(file, function(e){
+		fs.unlink(file1, function(e){
 			if(e) throw e;
 		 });
+     fs.unlink(file2, function(e){
+ 			if(e) throw e;
+ 		 });
 		data.remove(function(){
 			req.flash('success_msg', 'Delete Successful');
 			res.redirect('product/booklist');

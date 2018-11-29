@@ -23,7 +23,8 @@ const userHistory = require('./routes/api/userHistory.js');
 const admin = require('./routes/admin/verify.js');
 const cate = require('./routes/admin/category');
 const book = require('./routes/admin/book');
-const cart = require('./routes/admin/cart')
+const cart = require('./routes/admin/cart');
+const manager = require('./routes/admin/manager');
 
 const app = express();
 
@@ -91,6 +92,7 @@ app.use('/admin', admin);
 app.use('/admin/category', cate);
 app.use('/admin/product', book);
 app.use('/admin/cart', cart);
+app.use('/admin/manager', manager);
 
 // app.use(express.static(path.join(__dirname, 'public')));
 // Serve static assets if in production

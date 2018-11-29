@@ -34,17 +34,18 @@ router.get('/', (req, res) => {
 // desc Create A Post
 // @access Public
 router.post('/', (req, res) => {
+  console.log(req.body.bookID);
   UserSession.findById(req.body.token)
     .then(Session => {
       try {
-        Comment.updateMany(
-          {userID: Session.userId, bookID: req.body.bookID},
-          {
-           $set: { rating: req.body.rating }
-          },
-         { upsert: true
-          }
-        )
+        console.log(Session.userId);
+        Comment.find({userID: Session.userId, bookID: req.body.bookID}, function(err, comments) {
+          if(err) console.log(err);
+          comments.forEach(comment => {
+            comment.rating = req.body.rating;
+            comment.save();
+          })
+        })
       } catch(e) {
         console.log(e);
       }
@@ -63,6 +64,20 @@ router.post('/', (req, res) => {
             resComment.name = user.toObject().name;
             res.json(resComment);
           });
+        Comment.find({bookID: req.body.bookID})
+          .then(comments => {
+            let totalRating = 0;
+            comments.forEach(comment => {
+              totalRating+= parseInt(comment.rating);
+            });
+            let avgRating = parseInt(totalRating/comments.length);
+            console.log(avgRating);
+            Book.findById(req.body.bookID, function(err, book) {
+              if(err) console.log(err);
+              book.rating = avgRating;
+              book.save();
+            })
+          })
       })
       .catch(err => console.log(err));
     })

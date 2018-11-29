@@ -46,6 +46,10 @@ const BookSchema = new Schema({
   },
   videoId: {
     type: String
+  },
+  count: {
+    type: Number,
+    default: 0
   }
 });
 
