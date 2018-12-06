@@ -7,8 +7,8 @@
         if(imp.bookId === im.bookId) {
           imp.count = parseInt(imp.count) + parseInt(im.count);
           imp.price = parseInt(imp.price) + parseInt(im.price);
-        };
-        if(imps.indexOf(im) <= 0) {
+        }
+        else if(imps.indexOf(im) < 0) {
           imps.push(im);
         }
       });
