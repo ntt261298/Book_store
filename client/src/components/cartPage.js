@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/cart.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './layout/Menu.js';
 import Login from './layout/Login.js';
@@ -16,12 +17,12 @@ export default class cartPage extends React.Component {
           <Menu />
         </header>
         <main>
-          <Container>
-            <Login />
-            <ForgetPwd />
+          <Login />
+          <ForgetPwd />
+          <div className="main-cart">
             <Navs />
             <Cart />
-          </Container>
+          </div>
         </main>
         <footer>
           <Footer />

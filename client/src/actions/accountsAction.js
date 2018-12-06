@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, SEND_MAIL, RESET_PASSWORD } from './types.js';
-import { getFromStorage } from '../helpers/localStorage';
+import { loadState } from '../helpers/localStorage';
 
 export const verifyToken = () => dispatch => {
-  const token = getFromStorage('the_main_app');
+  const token = loadState();
   if(token) {
     axios.get(`/api/account/verify?token=${token}`)
       .then(res => {

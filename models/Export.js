@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Schema
-const ImportSchema = new Schema({
+const ExportSchema = new Schema({
   bookId: {
     type: String,
     require: true
@@ -21,4 +21,4 @@ const ImportSchema = new Schema({
   }
 });
 
-module.exports = Import = mongoose.model('import', ImportSchema);
+module.exports = Export = mongoose.model('export', ExportSchema);

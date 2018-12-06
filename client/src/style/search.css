@@ -57,3 +57,35 @@
 .book12 {
   grid-area: book12;
 }
+/* Responsive Style */
+@media screen and (max-width: 600px) {
+  .search-body {
+    margin-top: 130px;
+    padding: 0 1.5rem;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'nav-bar'
+      'booklist'
+  }
+
+  .book-list {
+    margin-top: 20px;
+    grid-area: booklist;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'book1'
+      'book2'
+      'book3'
+      'book4'
+      'book5'
+      'book6'
+      'book7'
+      'book8'
+      'book9'
+      'book10'
+      'book11'
+      'book12'
+  }
+}

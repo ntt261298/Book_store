@@ -8,13 +8,17 @@ export const getCart = () =>  {
 }
 
 // addToCart
-export const addToCart = (id, count, name, price) => (
+export const addToCart = (id, bookId, count, name, price, bookImage, author, rating) => (
   {
     type: ADD_TO_CART,
     id,
+    bookId,
     count,
     name,
-    price
+    price,
+    author,
+    bookImage,
+    rating
   }
 );
 
@@ -27,11 +31,11 @@ export const removeFromCart = (id) => (
 );
 
 // updateCartItem
-export const updateCartItem = (id, count) => (
+export const updateCart = (cate, id) => (
   {
     type: UPDATE_CART_ITEM,
+    cate,
     id,
-    count,
   }
 );
 

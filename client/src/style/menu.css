@@ -56,3 +56,49 @@
 .cart:hover {
   cursor: pointer;
 }
+/* Responsive Style */
+@media screen and (max-width: 600px) {
+  .menu {
+    top:0px;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    background: var(--light);
+    align-items: center;
+    text-align: center;
+    display: grid;
+    grid-gap: 20px;
+    padding: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'logo'
+      'search'
+      'option'
+  }
+
+  .search input[type="text"] {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .option {
+    grid-area: option;
+    text-align: center;
+    display: flex;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'dropdown cart'
+  }
+  .dropdown {
+    grid-area: dropdown;
+  }
+  .cart {
+    grid-area: cart;
+  }
+  .option img {
+    float: left;
+    width: 40px;
+    padding: 5px;
+  }
+}

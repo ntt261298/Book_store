@@ -4,7 +4,11 @@ const router = express.Router();
 // Transaction Model
 const Transaction = require('../../models/Transaction.js');
 // UserSession Model
-const UserSession =require('../../models/UserSession.js');
+const UserSession = require('../../models/UserSession.js');
+// Export Model
+const Export = require('../../models/Export.js');
+// Book Model
+const Book = require('../../models/Books.js');
 
 // @route GET api/transactions
 // desc GET All transactions
@@ -30,6 +34,20 @@ router.post('/', (req, res) => {
           address: req.body.address,
           cart: req.body.carts
       });
+      req.body.carts.forEach(cart => {
+        const newExport = new Export({
+          bookId: cart.bookId,
+          count: cart.count,
+          price: cart.price,
+        });
+        Book.findById(cart.bookId)
+          .then(book => {
+            book.count = parseInt(book.count) - parseInt(cart.count);
+            if(book.count >= 0) book.save();
+          })
+        newExport.save();
+      })
+
       newTransaction.save()
       .then(transaction => res.json(transaction))
       .catch(err => console.log(err));

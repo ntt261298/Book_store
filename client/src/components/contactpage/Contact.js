@@ -8,7 +8,8 @@ class Contact extends React.Component {
   state = {
     Email: '',
     Phone: '',
-    Address: ''
+    Address: '',
+    Message: ''
   }
 
   onChanged(e) {
@@ -23,12 +24,33 @@ class Contact extends React.Component {
     const phone = this.state.Phone;
     const address = this.state.Address;
     e.preventDefault();
+    if(!email) {
+      this.setState({
+        message: 'Email is empty'
+      });
+      return;
+    }
+    if(!phone) {
+      this.setState({
+        message: 'Phone is empty'
+      });
+      return;
+    }
+    if(!address) {
+      this.setState({
+        message: 'Address is empty'
+      });
+      return;
+    }
     this.props.userCheckout(token, email, phone, address, this.props.cart.carts);
+    this.setState({
+      message: 'Successful'
+    })
   }
 
   render() {
     return (
-      <Form>
+      <Form style={{marginTop: '30px'}}>
         <Row form>
           <Col md={6}>
             <FormGroup>
@@ -38,7 +60,7 @@ class Contact extends React.Component {
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="phoneNumber">Phong</Label>
+              <Label for="phoneNumber">Phone</Label>
               <Input type="text" name="Phone" onChange={this.onChanged.bind(this)} placeholder="Your phone number..." />
             </FormGroup>
           </Col>
@@ -48,6 +70,9 @@ class Contact extends React.Component {
           <Input type="text" name="Address" onChange={this.onChanged.bind(this)} placeholder="So 1 Giai Phong Hanoi"/>
         </FormGroup>
         <Button onClick={this.onSubmitClick.bind(this)}>Checkout</Button>
+        { this.state.message ? (
+          <div className="alert alert-danger mt-2">{this.state.message}</div>
+        ) : null}
       </Form>
     );
   }

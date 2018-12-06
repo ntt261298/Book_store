@@ -1,3 +1,40 @@
+<% imps = [];
+   exps = [];
+  allImp.forEach(im => {
+    if(imps.length === 0) imps.push(im);
+    else {
+      imps.forEach(imp => {
+        if(imp.bookId === im.bookId) {
+          imp.count = parseInt(imp.count) + parseInt(im.count);
+          imp.price = parseInt(imp.price) + parseInt(im.price);
+        };
+        if(imps.indexOf(im) <= 0) {
+          imps.push(im);
+        }
+      });
+    }
+  });
+
+  allExp.forEach(ex => {
+    if(exps.length === 0) exps.push(ex);
+    else {
+      exps.forEach(exp => {
+        if(exp.bookId === ex.bookId) {
+          exp.count = parseInt(exp.count) + parseInt(ex.count);
+          exp.price = parseInt(exp.price) + parseInt(ex.price);
+        };
+        if(exps.indexOf(ex) <= 0) {
+          exps.push(ex);
+        }
+      });
+    }
+  });
+
+  console.log('imp', imps);
+  console.log('exp', exps);
+
+%>
+
 <% include ../layout/header.ejs %>
         <!-- END TOPBAR -->
         <!-- START CONTAINER -->
@@ -43,17 +80,19 @@
                                       <input type="date" id="start" name="trip-start"
                                       value="2018-10-20"
                                       min="2018-01-01" max="2018-12-31">
-                                      <label for="start">End date:</label>
+                                      <label for="end">End date:</label>
 
                                       <input type="date" id="end" name="trip-start"
                                       value="2018-07-22"
-                                      min="2018-01-01" max="2018-12-31">
+                                      min="2018-01-01" max="2018-12-31" onchange="changeEndDate()">
+
 
 
                                         <!-- ********************************************** -->
                                         <table class="display table table-hover table-condensed">
                                             <thead>
                                                 <tr>
+                                                    <th>Product Id</th>
                                                     <th>Product</th>
                                                     <th>Export Count</th>
                                                     <th style="text-align: center">Price</th>
@@ -62,11 +101,21 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                              <% imps.forEach(function(imp){%>
+                                              <tr>
+                                                  <td><%= imp.bookId%></td>
+                                                  <td><%= imp.name%></td>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td><%= imp.count%></td>
+                                                  <td>$<%= imp.price%></td>
+                                              </tr>
+                                              <%})%>
                                                 <tr>
                                                     <th>Total</th>
                                                     <th></th>
                                                     <th style="text-align: center"></th>
+                                                    <th></th>
                                                     <th></th>
                                                     <th></th>
                                                 </tr>
@@ -87,6 +136,16 @@
             </div>
 
 <% include ../layout/footer.ejs %>
+            <script>
+              let startDate = document.getElementById('start');
+              let endDate = document.getElementById('end');
+              const changeEndDate = () => {
+                startDate = document.getElementById('start').valueAsDate.getTime();
+                endDate = document.getElementById('end').valueAsDate.getTime();
+                window.location=`http://localhost:5000/admin/manager/export/${startDate}/${endDate}`;
+                return;
+              }
+            </script>
             <script src="TT_Admin/assets/plugins/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
             <script src="TT_Admin/assets/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
             <script src="TT_Admin/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>

@@ -1,5 +1,5 @@
 import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, SEND_MAIL, RESET_PASSWORD } from '../actions/types.js';
-import { setInStorage } from '../helpers/localStorage';
+import { saveState } from '../helpers/localStorage';
 
 const initialState = {
   token: '',
@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
           loginErr: action.payload.message
         };
       else {
-        setInStorage('the_main_app', action.payload.token);
+        saveState(action.payload.token);
         return {
           ...state,
           token: action.payload.token,

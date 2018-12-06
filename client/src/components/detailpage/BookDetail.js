@@ -15,7 +15,13 @@ class BookDetail extends React.Component {
     active2: '',
     rating: 3,
     comment: '',
-    message: ''
+    message: '',
+    box: 1,
+    box1: 'active-box',
+    box2: '',
+    box3: '',
+    box4: '',
+    box5: ''
   }
   componentDidMount() {
     this.props.getBooks();
@@ -36,8 +42,8 @@ class BookDetail extends React.Component {
     })
   }
 
-  onAddToCartClick(name, price) {
-    this.props.addToCart(uuid(), this.state.qty, name, price);
+  onAddToCartClick(id, name, price, bookImage, author, rating) {
+    this.props.addToCart(uuid(), id, this.state.qty, name, price, bookImage, author, rating);
   }
 
   active1() {
@@ -117,7 +123,6 @@ class BookDetail extends React.Component {
     let to = new Date();
     let differenceTravel = to.getTime() - from.getTime();
     let seconds = Math.floor(differenceTravel / 1000);
-    console.log(seconds);
     if(seconds < 60) {
       return seconds + ` seconds ago`;
     } else if(60 <= seconds && seconds < 3600) {
@@ -132,6 +137,113 @@ class BookDetail extends React.Component {
   _onReady(event) {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
+  }
+
+  setBoxComment(value) {
+    switch (value) {
+      case '1': {
+        this.setState({
+          box: 1,
+          box1: 'active-box', box2: '', box3: '', box4: '', box5: ''
+        });
+        break;
+      }
+      case '2': {
+        this.setState({
+          box: 2,
+          box1: '', box2: 'active-box', box3: '', box4: '', box5: ''
+        });
+        break;
+      }
+      case '3': {
+        this.setState({
+          box: 3,
+          box1: '', box2: '', box3: 'active-box', box4: '', box5: ''
+        });
+        break;
+      }
+      case '4': {
+        this.setState({
+          box: 4,
+          box1: '', box2: '', box3: '', box4: 'active-box', box5: ''
+        });
+        break;
+      }
+      case '5': {
+        this.setState({
+          box: 5,
+          box1: '', box2: '', box3: '', box4: '', box5: 'active-box'
+        });
+        break;
+      }
+      case 'left': {
+        if(this.state.box === 1) break;
+        this.setState({
+          box: this.state.box -1,
+          box1: '', box2: '', box3: '', box4: '', box5: ''
+        });
+        switch (this.state.box) {
+          case 2:
+            this.setState({
+              box1: 'active-box'
+            })
+            break;
+          case 3:
+            this.setState({
+              box2: 'active-box'
+            })
+            break;
+          case 4:
+            this.setState({
+              box3: 'active-box'
+            })
+            break;
+          case 5:
+            this.setState({
+              box4: 'active-box'
+            })
+            break;
+          default:
+
+        }
+        break;
+      }
+      case 'right': {
+        if(this.state.box === 5) break;
+        this.setState({
+          box: this.state.box + 1,
+          box1: '', box2: '', box3: '', box4: '', box5: ''
+        });
+        switch (this.state.box) {
+          case 1:
+            this.setState({
+              box2: 'active-box'
+            })
+            break;
+          case 2:
+            this.setState({
+              box3: 'active-box'
+            })
+            break;
+          case 3:
+            this.setState({
+              box4: 'active-box'
+            })
+            break;
+          case 4:
+            this.setState({
+              box5: 'active-box'
+            })
+            break;
+          default:
+
+        }
+        break;
+      };
+      default:
+        break;
+    };
+    return;
   }
 
   render() {
@@ -180,7 +292,7 @@ class BookDetail extends React.Component {
                       <img class="plus" src="../image/plus.svg" onClick={this.onAddQtyClick.bind(this)} alt=""/>
                     </div>
                     <div class="add-cart">
-                      <img src="../image/baseline-add_shopping_cart-24px.svg" onClick={this.onAddToCartClick.bind(this, name, price)} alt=""/>
+                      <img src="../image/baseline-add_shopping_cart-24px.svg" onClick={this.onAddToCartClick.bind(this, _id, name, price, bookImage, author, rating)} alt=""/>
                     </div>
                   </div>
                   <p class="detail-infor">{des.slice(0, 200)}...</p>
@@ -202,12 +314,12 @@ class BookDetail extends React.Component {
             <input type="text" name="comment" placeholder="Your comment about this book..." class="comment-input" onChange={this.onChanged.bind(this)}/>
             <input type="submit" value="SEND" class="comment-button" onClick={this.onCommentSubmit.bind(this, _id, token)}/>
           </div>
-          <div>
+          <div class="star-center">
             { this.pickRating(this.state.rating) }
           </div>
           { this.onComment(this.state.message)}
           {
-            comment.slice(0, 5).map(({name, bookID, comment, rating, date}, index) => {if(bookID === _id) return(
+            comment.slice((this.state.box - 1)*5, this.state.box*5).map(({name, bookID, comment, rating, date}, index) => {if(bookID === _id) return(
               <div class="comment">
                 <div class="user user-1">
                   <img src="../image/account-circle.svg" alt=""/>
@@ -341,55 +453,32 @@ class BookDetail extends React.Component {
                       </div>
                     </div>
                     <div class="numeric">
-                      <img src="../image/baseline-chevron_left-24px.svg" alt=""/>
-                      <img src="../image/page-first.svg" alt=""/>
-                      <img src="../image/numeric-1-box.svg" alt=""/>
-                      <img src="../image/numeric-2-box-outline.svg" alt=""/>
-                      <img src="../image/numeric-3-box-outline.svg" alt=""/>
-                      <img src="../image/numeric-4-box-outline.svg" alt=""/>
-                      <img src="../image/numeric-5-box-outline.svg" alt=""/>
-                      <img src="../image/page-last.svg" alt=""/>
-                      <img src="../image/baseline-chevron_right-24px.svg" alt=""/>
+                      <img src="../image/baseline-chevron_left-24px.svg" alt="" onClick={this.setBoxComment.bind(this, 'left')}/>
+                      <img src="../image/page-first.svg" alt="" onClick={this.setBoxComment.bind(this, '1')}/>
+                      <span className={`numeric-box ${this.state.box1}`}  onClick={this.setBoxComment.bind(this, '1')}>1</span>
+                      <span className={`numeric-box ${this.state.box2}`} onClick={this.setBoxComment.bind(this, '2')}>2</span>
+                      <span className={`numeric-box ${this.state.box3}`} onClick={this.setBoxComment.bind(this, '3')}>3</span>
+                      <span className={`numeric-box ${this.state.box4}`} onClick={this.setBoxComment.bind(this, '4')}>4</span>
+                      <span className={`numeric-box ${this.state.box5}`} onClick={this.setBoxComment.bind(this, '5')}>5</span>
+                      <img src="../image/page-last.svg" alt="" onClick={this.setBoxComment.bind(this, '5')}/>
+                      <img src="../image/baseline-chevron_right-24px.svg" alt="" onClick={this.setBoxComment.bind(this, 'right')}/>
                     </div>
-                    <h1 class="suggest">Suggestions</h1>
-                    <div class="suggest-book">
-                      <div class="book book-1">
-                        <img src="../image/Harry-2.gif" alt=""/>
-                        <h4>Harry Potter</h4>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-haft-star_rate-18px.svg" alt=""/></span>
-                        <span>$12</span>
-                      </div>
-                      <div class="book book-2">
-                        <img src="../image/Harry-2.gif" alt=""/>
-                        <h4>Harry Potter</h4>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span>$10</span>
-                      </div>
-                      <div class="book book-3">
-                        <img src="../image/Harry-2.gif" alt=""/>
-                        <h4>Harry Potter</h4>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-haft-star_rate-18px.svg" alt=""/></span>
-                        <span>$10</span>
-                      </div>
-                      <div class="book book-4">
-                        <img src="../image/Harry-2.gif" alt=""/>
-                        <h4>Harry Potter</h4>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>
-                        <span>$15</span>
-                      </div>
+                    <h1 style={{marginTop: '30px'}}>Suggestions</h1>
+                    <div class="suggest-book" style={{width: '80%'}}>
+                      {
+                        books.slice(0, 4).map(({_id, name, bookImage, rating, price}, index) => (
+                          <div class={`book book-${index + 1}`}>
+                            <a href={'/detail/' + _id}>
+                              <img style={{height: '200px'}} src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                            </a>
+                            <h4 style={{fontSize: '16px', textAlign: 'left'}}>{ name }</h4>
+                            {
+                              this.renderStar(rating)
+                            }
+                            <span>${price}</span>
+                          </div>
+                        ))
+                      }
                     </div>
                     <h1>Detail Information</h1>
                     <div class="detail">

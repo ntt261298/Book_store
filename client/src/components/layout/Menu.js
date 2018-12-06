@@ -116,8 +116,8 @@ class Menu extends React.Component {
                 </UncontrolledDropdown>
               )
             }
-            <Link to={`/cart`}>
-              <div className="cart">
+            <Link to={`/cart`} className="cart">
+              <div>
                 {
                   cartLen ? (
                     <img src="../../image/baseline-shopping_cart-notify-24px.svg" alt=""/>

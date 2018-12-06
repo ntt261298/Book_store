@@ -1,7 +1,6 @@
 import React from 'react';
-import '../../style/cart.css';
-import { getCart } from '../../actions/cartAction.js';
-import { toggleLogin } from '../../actions/itemsAction.js';
+import { getCart, removeFromCart, updateCart } from '../../actions/cartAction.js';
+import { toggleLogin, getBooks } from '../../actions/itemsAction.js';
 import Loading from 'react-loading-animation';
 import currency from '../../helpers/currency.js';
 import total from '../../helpers/total.js';
@@ -12,10 +11,23 @@ import { PropTypes } from 'prop-types';
 
 class Cart extends React.Component {
   state = {
-    message: ''
+    message: '',
   }
   componentDidMount() {
     this.props.getCart();
+    this.props.getBooks();
+  }
+
+  deleteItem(id) {
+    this.props.removeFromCart(id);
+  }
+
+  onMinusQtyClick(id) {
+    this.props.updateCart('minus', id);
+  }
+
+  onAddQtyClick(id) {
+    this.props.updateCart('add', id);
   }
 
   onCheckoutClick(token) {
@@ -37,107 +49,124 @@ class Cart extends React.Component {
     return null;
   }
 
+  renderStar(rating) {
+    let star = [];
+    for(let i = 0; i < parseInt(rating); i++) {
+      star.push(<span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>)
+    };
+    if(rating - parseInt(rating)) {
+      star.push(<span class="star"><img src="../image/baseline-half-star_rate-18px.svg" alt=""/></span>)
+    }
+    return star;
+  }
+
   render() {
-    const allcart  = this.props.cart;
+    const allcart  = this.props.cart.carts;
     const token = this.props.account.token;
-    console.log(allcart);
-    console.log(this.state.message);
+    const { books } = this.props.book;
     // if (isLoading) return <div className='loading'><Loading /></div>;
     // if(allcart.carts.length === 0) return <h2>You have not bought something yet...</h2>;
     return (
+      <div className="cart-content">
+        <div className="item-content">
+          { allcart.map(({id, name, author, bookImage, rating, price, count}, index) => (
+            <div className={`product-cart product-cart-${index + 1}`}>
+              <div className="book-img-cart">
+                <img src={`http://localhost:5000/uploads/${bookImage}`}></img>
+              </div>
+              <div className="book-content-cart">
+                <h4>{name }</h4>
+                <p>{ author }</p>
+                {
+                  this.renderStar(rating)
+                }
+                <div>
+                  <img class="delete-cart"  src="../image/delete.svg" onClick={this.deleteItem.bind(this, id)}></img>
+                  <img src="../image/baseline-add_shopping_cart-24px.svg"></img>
+                </div>
+              </div>
+              <div className="price-cart">
+                ${ price }
+              </div>
+              <div className="change-count-cart">
+                <div class="option">
+                  <img class="minus" src="../image/minus.svg" onClick={this.onMinusQtyClick.bind(this, id)} alt=""/>
+                  <span>{count}</span>
+                  <img class="plus" src="../image/plus.svg" onClick={this.onAddQtyClick.bind(this, id)} alt=""/>
+                </div>
+              </div>
 
-      <div class="main-content">
-      <div class="between-information">
-        <div class="book-cart">
-          <div class="book-1">
-            <div class="image-book-1">
-              <img src="../image/harry-book.jpg" alt="" />
             </div>
-            <div class="quickview-book-1">
-              <span>Harry Potter and the Deathly Hallows</span>
-              <h5>J.K Rowling</h5>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span><br/>
-              <span class="library-add" ><img src="../image/outline-library_add-24px.svg" /></span>
-              <span class="remove-book" ><img src="../image/outline-remove_shopping_cart-24px.svg"/></span>
-            </div>
-            <span class="price-1">$50</span>
-            <div class="change-quantity-1">
-              <img src="../image/minus.svg" alt=""/>
-              <span>3</span>
-              <img src="../image/plus.svg" alt=""/>
-              <span>$150</span>
-            </div>
-          </div>
-          <div class="book-2">
-            <div class="image-book-2">
-              <img src="../image/codeDao.gif" alt=""/>
-            </div>
-            <div class="quickview-book-2">
-              <span>Code Dạo Kí Sự Lập trình viên đâu phải chỉ biết code</span>
-              <h5>Phạm Huy Hoàng</h5>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span><br/>
-              <span class="library-add" ><img src="../image/outline-library_add-24px.svg"/></span>
-              <span class="remove-book" ><img src="../image/outline-remove_shopping_cart-24px.svg"/></span>
-            </div>
-            <span class="price-2">$10</span>
-            <div class="change-quantity-2">
-              <span class="minus"><img src="../image/minus.svg" alt=""/></span>
-              <span>2</span>
-              <span class="plus"><img src="../image/plus.svg" alt=""/></span>
-              <span>$20</span>
-            </div>
-          </div>
-          <div class="book-3">
-            <div class="image-book-3">
-              <img src="../image/tuoiTre.jpg" alt=""/>
-            </div>
-            <div class="quickview-book-3">
-              <span>Tuổi trẻ đáng giá bao nhiêu</span>
-              <h5>Rosie Nguyễn</h5>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/full-star.png" alt=""/></span>
-              <span class="star"><img src="../image/half-star.png" alt=""/></span><br/>
-              <span class="library-add" ><img src="../image/outline-library_add-24px.svg"/></span>
-              <span class="remove-book" ><img src="../image/outline-remove_shopping_cart-24px.svg"/></span>
-            </div>
-            <span clas="price-3">$20</span>
-            <div class="change-quantity-3">
-              <img src="../image/minus.svg" alt=""/>
-              <span>1</span>
-              <img src="../image/plus.svg" alt=""/>
-              <span>$20</span>
-            </div>
-          </div>
+          )) }
+          {
+            allcart.length ? (
+              <div>
+                <h1 style={{marginTop: '60px'}}>Suggestions</h1>
+                <div class="suggest-book">
+                  {
+                    books.slice(0, 4).map(({_id, name, bookImage, rating, price}, index) => (
+                      <div class={`book book-${index + 1}`}>
+                        <a href={'/detail/' + _id}>
+                          <img style={{height: '150px'}} src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                        </a>
+                        <h4 style={{fontSize: '16px', textAlign: 'left'}}>{ name }</h4>
+                        {
+                          this.renderStar(rating)
+                        }
+                        <span>${price}</span>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            ) : (<h2>Your cart is empty</h2>)
+          }
         </div>
+      {
+        allcart.length ? (
+            <div className="total">
+              <h1 className="title">Total</h1>
+              <h1 className="total-price">${total(allcart)}</h1>
+              {
+                token ? (
+                  <div>
+                    <a href='/contact'>
+                        <input onClick={this.onCheckoutClick.bind(this, token)}  type="submit" value="Buy" class="buy-button"/>
+                    </a>
+                    <a href='/contact'>
+                      <input onClick={this.onCheckoutClick.bind(this, token)} type="submit" value="Send gift" class="gift-button"/>
+                    </a>
+                  </div>
+                ) : (
+                  <div>
+                    <input onClick={this.onCheckoutClick.bind(this, token)}  type="submit" value="Buy" class="buy-button"/>
+                    <input onClick={this.onCheckoutClick.bind(this, token)} type="submit" value="Send gift" class="gift-button"/>
+                  </div>
+                )
+              }
+              { this.onCheckout(this.state.message) }
+            </div>
+        ) : null
+      }
+
       </div>
-      <div class="result">
-        <h2>Total : $190</h2>
-        <input type="submit"  value="Buy"/>
-        <input type="submit"  value="Send gift"/>
-      </div>
-    </div>
-    );
+
+     );
   }
 };
 
 Cart.propTypes = {
   getCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  getBooks: PropTypes.func.isRequired,
   toggleLogin: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   cart: state.cart,
-  account: state.account
+  account: state.account,
+  book: state.book
 })
 
-export default connect(mapStateToProps, {getCart, toggleLogin})(Cart);
+export default connect(mapStateToProps, {getCart, getBooks, updateCart, removeFromCart, toggleLogin})(Cart);

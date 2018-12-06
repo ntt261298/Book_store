@@ -100,3 +100,46 @@
 .book-inf .detail-infor {
   font-size: 9px;
 }
+/* Responsive Style */
+@media screen and (max-width: 600px) {
+  .home-body {
+    margin-top: 80px;
+    padding: 0;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'nav-bar'
+      'content'
+  }
+  .nav-bar {
+    padding: 0 1.5rem;
+  }
+  .book-home {
+    padding: 1rem 1.5rem;
+    margin-top: 20px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'book1'
+      'book2'
+      'book3'
+      'book4'
+      'book5'
+      'book6'
+      'book7'
+      'book8'
+      'book9'
+      'book10'
+      'book11'
+      'book12'
+  }
+
+  .carousel-inner img {
+    height: 200px;
+  }
+  .carousel-indicators {
+    z-index: 0;
+  }
+}

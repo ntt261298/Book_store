@@ -9,9 +9,13 @@ const cartItem = (state, action) => {
       case ADD_TO_CART:
         return {
           id: action.id,
+          bookId: action.bookId,
           count: action.count,
           name: action.name,
-          price: action.price
+          price: action.price,
+          bookImage: action.bookImage,
+          author: action.author,
+          rating: action.rating
         };
       case REMOVE_FROM_CART:
         return state.id !== action.id;
@@ -19,14 +23,25 @@ const cartItem = (state, action) => {
         if (state.id !== action.id) {
           return state;
         }
-
-        return Object.assign(
-          {},
-          state,
-          {
-            count: action.count,
-          }
-        );
+        if (action.cate === 'minus') {
+          if(state.count === 1) return state;
+          return Object.assign(
+            {},
+            state,
+            {
+              count: state.count - 1,
+            }
+          );
+        }
+        if (action.cate === 'add') {
+          return Object.assign(
+            {},
+            state,
+            {
+              count: state.count + 1,
+            }
+          );
+        }
       default:
         return state;
   }
@@ -47,12 +62,15 @@ export default function(state = initialState, action) {
         carts: state.carts.filter(item => cartItem(item, action))
       }
     case UPDATE_CART_ITEM:
-      return state.map(item => cartItem(item, action));
-      case USER_CHECKOUT:
-        return {
-          ...state,
-          carts: state.carts.slice(1)
-        }
+      return {
+        ...state,
+        carts: state.carts.map(item => cartItem(item, action))
+      }
+    case USER_CHECKOUT:
+      return {
+        ...state,
+        carts: []
+      }
     default:
       return state;
   }

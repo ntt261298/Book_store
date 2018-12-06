@@ -1,27 +1,20 @@
-export function getFromStorage(key) {
-  if(!key) {
-    return null;
-  }
-
+export const loadState= () => {
   try {
-    const valueStr = localStorage.getItem(key);
-    if(valueStr) {
-      return JSON.parse(valueStr);
+    const seriallizedState = localStorage.getItem('state');
+    if(seriallizedState === null) {
+      return undefined;
     }
-    return null;
-  } catch(err) {
-    return null;
+    return JSON.parse(seriallizedState);
+  } catch (err) {
+    return undefined;
   }
 }
 
-export function setInStorage(key, obj) {
-  if(!key) {
-    console.error('Err: Key is missing');
-  }
-
+export const saveState = (state) => {
   try {
-    localStorage.setItem(key, JSON.stringify(obj));
-  } catch(err) {
-    console.error(err);
+    const seriallizedState = JSON.stringify(state);
+    localStorage.setItem('state', seriallizedState);
+  } catch (err) {
+    // Ignore write errs.
   }
 }

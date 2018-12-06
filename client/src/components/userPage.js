@@ -19,7 +19,6 @@ export default class userPage extends React.Component {
         <main>
           <Login />
           <ForgetPwd />
-          {/* <ShoppingHistory /> */}
           <User />
         </main>
         <footer>

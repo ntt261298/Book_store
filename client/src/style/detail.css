@@ -157,9 +157,9 @@
   margin-top: 3rem;
 }
 .suggest-book {
-  width: 80%;
+  background: transparent;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     'book-1 book-2 book-3 book-4'
@@ -187,7 +187,6 @@
 .book-4 {
   grid-area: book-4;
 }
-
 .detail {
   font-size: 0.8rem;
   width: 50%;
@@ -208,4 +207,106 @@
 }
 .infor-entity {
   grid-area: infor-entity;
+}
+.slide-suggest {
+  width: 60%;
+  margin: 0 23vw;
+  padding: 0 7vw;
+  margin-bottom: 50px
+}
+.numeric-box {
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 15px;
+  border: 2px solid #BBBBBB;
+  color: #BBBBBB;
+  display: inline;
+  margin: 0 4px;
+}
+.numeric-box:hover {
+  cursor: pointer;
+}
+.numeric img:hover {
+  cursor: pointer;
+}
+.active-box {
+  background: #BBBBBB;
+  color: var(--primary);
+}
+/* Responsive Style */
+@media screen and (max-width: 600px) {
+  .detail-body {
+    margin-top: 130px;
+    padding: 0 1rem;
+    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      'nav-bar'
+      'main-content'
+  }
+
+  /* main content style */
+  .book-infor {
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'book-slide book-detail'
+  }
+  .detail-infor {
+    width: 100%;
+  }
+  .book-slide .image-slide {
+    width: 180px;
+    height: 240px;
+  }
+  .book-detail h2 {
+    font-size: 18px;
+  }
+  .book-detail p {
+    font-size: 12px;
+  }
+
+
+  .comment-nav {
+    height: 3rem;
+    width: 100%;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'comment-input comment-input comment-button'
+  }
+  .comment {
+    padding: 0 2rem;
+    width: 100%;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'user  comment-detail comment-detail'
+  }
+  .star-center {
+    text-align: center;
+  }
+
+  .numeric {
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .suggest-book {
+    width: 100% !important;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'book-1 book-2'
+      'book-3 book-4'
+  }
+  .detail {
+    font-size: 0.8rem;
+    width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    grid-gap: 10px;
+  }
 }
