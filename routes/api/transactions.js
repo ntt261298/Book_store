@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
         const newExport = new Export({
           bookId: cart.bookId,
           count: cart.count,
-          price: cart.price,
+          price: cart.price*cart.count,
         });
         Book.findById(cart.bookId)
           .then(book => {

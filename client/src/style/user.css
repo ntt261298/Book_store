@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 8.33% 20.83% 8.33% 10% auto 8.33% 10% 8.33%;
     grid-template-rows: 100px 120px 120px 120px auto;
-    grid-gap: 0px;
+    grid-gap: 20px;
 }
 
 
@@ -42,6 +42,7 @@
     display: grid;
     grid-template-columns: 8.33% 20.83% auto;
     grid-template-rows: 100px auto;
+    grid-gap: 20px;
 }
 
 
@@ -83,9 +84,9 @@ a.prf-navbar:link,a.prf-navbar:visited {
 }
 
 a.prf-navbar:hover {
-    box-shadow: 2px 0px 4px #FFFFFF4D, 
+    box-shadow: 2px 0px 4px #FFFFFF4D,
         -2px 0px 4px #FFFFFF4D,
-        0px 2px 4px #FFFFFF4D, 
+        0px 2px 4px #FFFFFF4D,
         0px -2px 4px #FFFFFF4D;
 }
 
@@ -100,7 +101,7 @@ a.prf-navbar:hover {
 .prf-grid-info {
     display: grid;
     grid-template-columns: 16.5% auto;
-    grid-template-rows: 140px 50px 50px 50px 50px 130px 50px 50px 50px; 
+    grid-template-rows: 140px 50px 50px 50px 50px 130px 50px 50px 50px;
 }
 
 
@@ -127,6 +128,10 @@ a.prf-navbar:hover {
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;
+}
+
+#prf-full-name {
+  margin-top: 38px;
 }
 
 .prf-input {
@@ -167,9 +172,9 @@ a.prf-navbar:hover {
 
 
 .prf-address:hover {
-    box-shadow: 2px 0px 4px #00CB834D, 
+    box-shadow: 2px 0px 4px #00CB834D,
     -2px 0px 4px #00CB834D,
-    0px 2px 4px #00CB834D, 
+    0px 2px 4px #00CB834D,
     0px -2px 4px #00CB834D;
 }
 
@@ -203,7 +208,7 @@ label:hover{
     color: #ffffff;
     background: transparent;
     margin-left: 30px;
-    padding-left: 40px; 
+    padding-left: 40px;
     /* top: 10px; */
     display: inline-block;
     cursor: pointer;
@@ -215,7 +220,7 @@ label:hover{
 }
 
 .prf-radio:hover input ~ .check {
-    border-color: #00CB83;  
+    border-color: #00CB83;
 }
 
 .prf-radio input:checked ~ .check {
@@ -242,9 +247,9 @@ label:hover{
 }
 
 .prf-input:hover {
-    box-shadow: 2px 0px 4px #00CB834D, 
+    box-shadow: 2px 0px 4px #00CB834D,
         -2px 0px 4px #00CB834D,
-        0px 2px 4px #00CB834D, 
+        0px 2px 4px #00CB834D,
         0px -2px 4px #00CB834D;
 }
 

@@ -1,5 +1,7 @@
 <% imps = [];
    exps = [];
+   results= [];
+  console.log('client', allImp);
   allImp.forEach(im => {
     if(imps.length === 0) imps.push(im);
     else {
@@ -8,11 +10,13 @@
           imp.count = parseInt(imp.count) + parseInt(im.count);
           imp.price = parseInt(imp.price) + parseInt(im.price);
         }
-        else if(imps.indexOf(im) < 0) {
-          imps.push(im);
-        }
       });
     }
+    let flag = 1;
+    imps.forEach(imp => {
+      if(imp.bookId === im.bookId) flag = 0;
+    });
+    if(flag) imps.push(im);
   });
 
   allExp.forEach(ex => {
@@ -23,15 +27,52 @@
           exp.count = parseInt(exp.count) + parseInt(ex.count);
           exp.price = parseInt(exp.price) + parseInt(ex.price);
         };
-        if(exps.indexOf(ex) <= 0) {
-          exps.push(ex);
-        }
       });
     }
+    let flag = 1;
+    exps.forEach(exp => {
+      if(exp.bookId === ex.bookId) flag = 0;
+    });
+    if(flag) exps.push(ex);
   });
+
+
+  imps.forEach(imp => {
+    imp.exportCount = 0;
+    imp.exportPrice = 0;
+    imp.importCount = imp.count;
+    imp.importPrice = imp.price;
+    results.push(imp);
+  });
+  exps.forEach(exp => {
+    results.forEach(rs => {
+      if(rs.bookId === exp.bookId) {
+        rs.exportCount = exp.count;
+        rs.exportPrice = exp.price;
+      }
+    });
+    let flag = 1;
+    results.forEach(rs => {
+      if(rs.bookId === exp.bookId) flag = 0;
+    })
+    if(flag) {
+      exp.importCount = 0;
+      exp.importPrice = 0;
+      results.push(exp);
+    }
+  })
+
 
   console.log('imp', imps);
   console.log('exp', exps);
+  console.log('result', results);
+  let totalExportCount = results.reduce((acc, item) => { return acc + (item.exportCount) }, 0);
+  let totalImportCount = results.reduce((acc, item) => { return acc + (item.importCount) }, 0);
+  let totalExportPrice = results.reduce((acc, item) => { return acc + (item.exportPrice) }, 0);
+  let totalImportPrice = results.reduce((acc, item) => { return acc + (item.importPrice)}, 0);
+
+
+
 
 %>
 
@@ -79,14 +120,14 @@
 
                                       <input type="date" id="start" name="trip-start"
                                       value="2018-10-20"
-                                      min="2018-01-01" max="2018-12-31">
+                                      min="2018-01-01" max="2019-01-05" onchange="changeStartDate()">
                                       <label for="end">End date:</label>
 
                                       <input type="date" id="end" name="trip-start"
-                                      value="2018-07-22"
-                                      min="2018-01-01" max="2018-12-31" onchange="changeEndDate()">
+                                      value="2018-12-21"
+                                      min="2018-01-01" max="2019-01-05" onchange="changeEndDate()">
 
-
+                                      <button type="submit" class="btn btn-primary" onclick="getExport()">View</button>
 
                                         <!-- ********************************************** -->
                                         <table class="display table table-hover table-condensed">
@@ -101,23 +142,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              <% imps.forEach(function(imp){%>
+                                              <% results.forEach(function(rs){%>
                                               <tr>
-                                                  <td><%= imp.bookId%></td>
-                                                  <td><%= imp.name%></td>
-                                                  <td></td>
-                                                  <td></td>
-                                                  <td><%= imp.count%></td>
-                                                  <td>$<%= imp.price%></td>
+                                                  <td><%= rs.bookId%></td>
+                                                  <td><%= rs.name%></td>
+                                                  <td><%= rs.exportCount%></td>
+                                                  <td>$<%= rs.exportPrice%></td>
+                                                  <td><%= rs.importCount%></td>
+                                                  <td>$<%= rs.importPrice%></td>
                                               </tr>
                                               <%})%>
                                                 <tr>
                                                     <th>Total</th>
                                                     <th></th>
-                                                    <th style="text-align: center"></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
+                                                    <th><%=totalExportCount%></th>
+                                                    <th>$<%=totalExportPrice%></th>
+                                                    <th><%=totalImportCount%></th>
+                                                    <th>$<%=totalImportPrice%></th>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -139,12 +180,13 @@
             <script>
               let startDate = document.getElementById('start');
               let endDate = document.getElementById('end');
-              const changeEndDate = () => {
+
+              const getExport = () => new Promise(function(resolve, reject) {
                 startDate = document.getElementById('start').valueAsDate.getTime();
                 endDate = document.getElementById('end').valueAsDate.getTime();
                 window.location=`http://localhost:5000/admin/manager/export/${startDate}/${endDate}`;
                 return;
-              }
+              });
             </script>
             <script src="TT_Admin/assets/plugins/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
             <script src="TT_Admin/assets/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>

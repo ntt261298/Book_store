@@ -37,13 +37,18 @@ router.get('/export/:start/:end', checkAdmin, function (req, res) {
 	Export.find().then(exps => {
 		exps.forEach(exp => {
 				if(exp.date.getTime() >= start && exp.date.getTime() <= end) {
-					allExp.push(exp);
+					Book.findById(exp.bookId).then(book => {
+						const resExp = exp.toObject();
+						resExp.name = book.toObject().name;
+						allExp.push(resExp);
+					})
 				}
 		});
 	})
 
 	setTimeout(() => {
 		console.log('allExp', allExp);
+		console.log('allImp', allImp);
 		res.render(`manager/export`,{errors: null, allImp: allImp, allExp: allExp})
 	}, 1000)
 

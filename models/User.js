@@ -12,6 +12,9 @@ const UserSchema = new Schema({
     type: String,
     // required: true
   },
+  phoneNumber: {
+    type: String
+  },
   email: {
     type: String,
     unique: true
@@ -21,10 +24,10 @@ const UserSchema = new Schema({
     required: true
   },
   gender: {
-    type: Boolean
+    type: String
   },
   birthday: {
-    type: Date
+    type: String
   },
   address: {
     type: String

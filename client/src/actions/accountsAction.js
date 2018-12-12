@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, SEND_MAIL, RESET_PASSWORD } from './types.js';
+import { VERIFY_TOKEN, USER_LOGIN, USER_SIGNUP, USER_LOGOUT, USER_HISTORY, USER_INFOR, USER_UPDATE, SEND_MAIL, RESET_PASSWORD } from './types.js';
 import { loadState } from '../helpers/localStorage';
 
 export const verifyToken = () => dispatch => {
@@ -56,10 +56,40 @@ export const userLogout = token => dispatch => {
 }
 
 export const getShoppingHistory = token => dispatch => {
-    axios.get(`/api/user?token=${token}`)
+    axios.get(`/api/user/history?token=${token}`)
     .then(res => {
         dispatch({
           type: USER_HISTORY,
+          payload: res.data
+        })
+    })
+}
+
+export const getInfor = token => dispatch => {
+    axios.get(`/api/user/infor?token=${token}`)
+    .then(res => {
+        dispatch({
+          type: USER_INFOR,
+          payload: res.data
+        })
+    })
+}
+
+export const updateUserInfor = (token, name, phone, gender, birthday, address, pwd, newpwd, repwd) => dispatch => {
+    axios.post(`/api/user/infor`, {
+      token,
+      name,
+      phone,
+      gender,
+      birthday,
+      address,
+      pwd,
+      newpwd,
+      repwd
+    })
+    .then(res => {
+        dispatch({
+          type: USER_UPDATE,
           payload: res.data
         })
     })
