@@ -2,11 +2,9 @@
     margin: 30px 0;
     display: grid;
     grid-template-columns: 8.33% 20.83% 8.33% 10% auto 8.33% 10% 8.33%;
-    grid-template-rows: 100px 120px 120px 120px auto;
-    grid-gap: 20px;
+    grid-template-rows: 100px 170px 170px 170px auto;
+    grid-gap: 0px;
 }
-
-
 
 
 .htr-properties {
@@ -20,8 +18,12 @@
     font-size: 18px;
     color: #3B86FF;
     margin: 30px 0 0 0;
-    width: 75%;
-    height: 25px;
+    width: 80%;
+    word-wrap: break-word;
+}
+
+.htr-order-id:hover{
+    color: #00CB83;
 }
 
 .htr-properties-value {
@@ -42,7 +44,6 @@
     display: grid;
     grid-template-columns: 8.33% 20.83% auto;
     grid-template-rows: 100px auto;
-    grid-gap: 20px;
 }
 
 
@@ -128,10 +129,6 @@ a.prf-navbar:hover {
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;
-}
-
-#prf-full-name {
-  margin-top: 38px;
 }
 
 .prf-input {
@@ -322,4 +319,285 @@ label:hover{
 
 .prf-submit-btn:active {
     outline: none;
+}
+
+/* order Details */
+
+/* grid */
+.od-grid-container {
+    display: grid;
+    grid-template-columns: 8.33% 20.83% 28.33% 5.18% 7.08% 7.08% 2.83% 5.18% auto;
+    grid-template-rows: 250px 70px auto;
+}
+
+.merged-col-4-6 {
+    grid-column: 4/7;
+}
+
+.merged-col-7-9 {
+    grid-column: 7/10;
+}
+
+.od-grid-merged-row {
+    grid-row: 1/8;
+}
+
+/* ---grid--- */
+
+/* navbar */
+img.od-avt {
+    border-radius: 50% 50% 50% 50%;
+    height: 70px;
+    width: 70px;
+    margin: 20px 20px 30px 0;
+    display: inline-block;
+    object-fit: cover;
+}
+
+.od-p {
+    margin: 40px 0 0 0;
+    vertical-align: top;
+    font-weight: bold;
+    color: #FFFFFF;
+    display: inline-block;
+}
+
+a.od-navbar {
+    margin-top: 30px;
+    list-style: none;
+    font-size: 20px;
+    color: #BBBBBB;
+    padding: 3px;
+    display: inline-block;
+    max-width: 300px;
+    width: 75%;
+}
+
+a.od-navbar:link,a.od-navbar:visited {
+    color: #BBBBBB;
+    font-style: none;
+    text-decoration: none;
+    padding: 3px;
+}
+
+a.od-navbar:hover {
+    box-shadow: 2px 0px 4px #FFFFFF4D,
+        -2px 0px 4px #FFFFFF4D,
+        0px 2px 4px #FFFFFF4D,
+        0px -2px 4px #FFFFFF4D;
+}
+
+.od-navbar a:active {
+    color: #00CB83;
+}
+/* ---navbar--- */
+
+/* detail */
+
+.od-properties-center {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px 0 20px 0;
+    text-align: center;
+}
+
+.od-properties-left {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px 0 20px 0;
+}
+
+.od-properties-value {
+    font-size: 18px;
+    color: #bbbbbb;
+    margin: 30px 0 0 0;
+    width: 75%;
+    height: 25px;
+}
+
+.od-properties-addr-value {
+    font-size: 15px;
+    color: #bbbbbb;
+    margin: 30px 0 0 0;
+    width: 75%;
+    height: 25px;
+}
+
+.od-product {
+    display: grid;
+    grid-template-columns: 140px auto;
+    margin: 10px 0 15px 0;
+}
+
+
+.od-book-img:hover {
+    box-shadow: 2px 0px 4px #FFFFFF4D,
+        -2px 0px 4px #FFFFFF4D,
+        0px 2px 4px #FFFFFF4D,
+        0px -2px 4px #FFFFFF4D;
+}
+
+.od-img {
+    height: 184px;
+    width: 138px;
+    display: inline-block;
+    object-fit: cover;
+    margin: 10px 0 10px 0;
+}
+
+.od-book-info {
+    margin: 10px 0 0 0;
+}
+
+.od-book-name {
+    font-size: 18px;
+    color: #bbbbbb;
+    margin: 0 0 0 20px;
+    padding: 5px;
+    width: 85%;
+    height: 70px;
+    cursor: pointer;
+}
+
+.od-book-name:hover {
+    box-shadow: 2px 0px 4px #FFFFFF4D,
+        -2px 0px 4px #FFFFFF4D,
+        0px 2px 4px #FFFFFF4D,
+        0px -2px 4px #FFFFFF4D;
+}
+
+.od-author {
+    font-size: 14px;
+    color: #777777;
+    margin: 10px 0 0 20px;
+    width: 85%;
+    height: 16px;
+}
+
+.od-rate {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.od-rate-block {
+    margin-left: 15px;
+}
+
+.od-img-btn {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.od-unit {
+    font-size: 18px;
+    color: #bbbbbb;
+    margin: 10px 0 0 0px;
+    width: 100%;
+    /* max-width: 80px; */
+    height: 20px;
+    text-align: center;
+}
+
+.od-total-state {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px 0 0 0;
+}
+.prf-grid-detail {
+  margin-top: -50px;
+  margin-left: 10px;
+  display: grid;
+  grid-area: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'recever date payment'
+    'list-detail list-detail list-detail'
+    'list-detail-item-1 list-detail-item-1 list-detail-item-1'
+    'list-detail-item-2 list-detail-item-2 list-detail-item-2'
+    'list-detail-item-3 list-detail-item-3 list-detail-item-3'
+}
+.receiver {
+  grid-area: recever;
+}
+.date {
+  grid-area: date
+}
+.payment {
+  grid-area: payment
+}
+.list-detail {
+  margin-top: 40px;
+  grid-area: list-detail;
+  display: grid;
+  grid-area: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    'od-product od-product od-product od-quantity od-price od-total'
+}
+.od-product {
+  grid-area: od-product
+}
+.od-quantity {
+  grid-area: od-quantity
+}
+.od-price {
+  grid-area: od-price
+}
+.od-total {
+  grid-area: od-total
+}
+.list-detail-item-1  {
+  margin-top: 40px;
+  grid-area: list-detail-item-1;
+  display: grid;
+  grid-area: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    'od-product-item od-product-item od-product-item od-quantity-item od-price-item od-total-item'
+}
+.list-detail-item-2  {
+  margin-top: 40px;
+  grid-area: list-detail-item-2;
+  display: grid;
+  grid-area: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    'od-product-item od-product-item od-product-item od-quantity-item od-price-item od-total-item'
+}
+.list-detail-item-3 {
+  margin-top: 40px;
+  grid-area: list-detail-item-3;
+  display: grid;
+  grid-area: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    'od-product-item od-product-item od-product-item od-quantity-item od-price-item od-total-item'
+}
+.od-product-item {
+  grid-area: od-product-item;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'book-img-cart book-content-cart book-content-cart'
+}
+.od-quantity-item {
+  grid-area: od-quantity-item;
+  text-align: center;
+}
+.od-price-item {
+  grid-area: od-price-item;
+  text-align: center;
+}
+.od-total-item {
+  grid-area: od-total-item;
+  text-align: center;
+}
+#prf-full-name {
+  margin-top: 30px;
 }

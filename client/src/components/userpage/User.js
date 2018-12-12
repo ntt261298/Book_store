@@ -19,6 +19,7 @@ class User extends React.Component {
       pwd: '',
       newpwd: '',
       repwd: '',
+      orderId: ''
   }
   componentDidMount() {
     this.props.getShoppingHistory(this.props.account.token);
@@ -85,6 +86,23 @@ class User extends React.Component {
     this.props.updateUserInfor(this.props.account.token, this.state.username, this.state.phone, this.state.gender, birthday,
                                this.state.address, this.state.pwd, this.state.newpwd, this.state.repwd);
   }
+  viewDetail(id) {
+    this.setState({
+      orderId: id,
+      page: 'orderdetail'
+    });
+  }
+
+  renderStar(rating) {
+    let star = [];
+    for(let i = 0; i < parseInt(rating); i++) {
+      star.push(<span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>)
+    };
+    if(rating - parseInt(rating)) {
+      star.push(<span class="star"><img src="../image/baseline-half-star_rate-18px.svg" alt=""/></span>)
+    }
+    return star;
+  }
 
   render() {
     const allItems  = this.props.account;
@@ -134,17 +152,17 @@ class User extends React.Component {
                         History
                     </a>
 
-                    <a class="prf-navbar" href="library.html">
+                    {/* <a class="prf-navbar" href="library.html">
                         <img src="../image/library-books.svg" style={{paddingRight: '20px'}}/>
                         Library
-                    </a>
+                    </a> */}
                 </div>
                 { allItems.history.length ? (
                   allItems.history.map((order, index) => (
                     <React.Fragment>
-                      <div class="htr-properties-value">
+                      <a class="htr-order-id" onClick={this.viewDetail.bind(this, order._id)}>
                           {order._id}
-                      </div>
+                      </a>
                       <div class="htr-properties-value">
                           {this.convertDate(order.orderDate)}
                       </div>
@@ -164,7 +182,108 @@ class User extends React.Component {
                   ))
                 ) : null }
             </div>
-            ) : (
+          ) : ( page === "orderdetail" ? (
+              <div class="prf-grid-container">
+                    <div>
+                    </div>
+
+                    <div class="prf-navbar" style={{maxWidth:'100%'}}>
+                      <img class="prf-avt" src="../image/account-circle.svg" />
+                      <p class="prf-p">{userInfor.name}</p>
+                    </div>
+
+                    <div class="merged-grid">
+                      <p class="merged-grid-text" ></p>
+                    </div>
+
+
+                    <div>
+                    </div>
+
+            <div class="merged-row-1">
+                <a class="prf-navbar" style={{marginTop: '30px' }} onClick={this.changePage.bind(this, 'information')}>
+                    <img src="../image/baseline-person-24px-white.svg" style={{paddingRight: '20px'}}/>
+                    Information
+                  </a>
+
+                  <a class="prf-navbar" onClick={this.changePage.bind(this, 'history')}>
+                    <img src="../image/history.svg" style={{paddingRight: '20px'}}/>
+                    History
+                  </a>
+
+        {/* <a class="prf-navbar" href="library.html">
+            <img src="../image/library-books.svg" style={{paddingRight: '20px'}}/>
+            Library
+        </a> */}
+            </div>
+
+            <div class="prf-grid-detail">
+              {allItems.history.map((order, index) => {
+                if(order._id === this.state.orderId) return (
+                  <React.Fragment>
+                    <div class="reveiver">
+                      <div class="od-properties-left">Receiver</div>
+                      <div class="od-properties-value">{order.email}</div>
+                      <div class="od-properties-addr-value">{order.address}</div>
+                    </div>
+                    <div class="date">
+                      <div class="od-properties-left">Date</div>
+                      <div class="od-properties-value">{this.convertDate(order.orderDate)}</div>
+                    </div>
+                    <div class="payment">
+                      <div class="od-properties-left">Payment</div>
+                      <div class="od-properties-value">Cash</div>
+                    </div>
+                  </React.Fragment>
+                )
+              })}
+
+              <div class="list-detail">
+                <div class="od-properties-left od-product">Products</div>
+                <div class="od-properties-center od-quantity">Quantity</div>
+                <div class="od-properties-center od-price">Price</div>
+                <div class="od-properties-center od-total">Total</div>
+              </div>
+              {allItems.history.map((order, index) => {
+                if(order._id === this.state.orderId)
+                  return order.cart.map((detail, index) => (
+                    <div class={`list-detail-item-${index+1}`}>
+                        <div class="od-product-item">
+                            <div className="book-img-cart">
+                              <img src={`http://localhost:5000/uploads/${detail.bookImage}`}></img>
+                            </div>
+                            <div className="book-content-cart">
+                              <h4>{detail.name }</h4>
+                              <p>{ detail.author }</p>
+                              {
+                                this.renderStar(detail.rating)
+                              }
+                              <div>
+                                <img class="delete-cart"  src="../image/delete.svg"></img>
+                                <img src="../image/baseline-add_shopping_cart-24px.svg"></img>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="od-quantity-item">
+                            ${ detail.count }
+                          </div>
+                          <div className="od-price-item">
+                            ${ detail.price }
+                          </div>
+                          <div className="od-total-item">
+                            ${ detail.price*detail.count }
+                          </div>
+
+                    </div>
+                  ))
+              })}
+            </div>
+            <div>
+
+            </div>
+
+          </div>
+          ) : (
                 <div class="prf-grid-container">
 
         <div>
@@ -194,10 +313,10 @@ class User extends React.Component {
                 History
             </a>
 
-            <a class="prf-navbar" href="library.html">
+            {/* <a class="prf-navbar" href="library.html">
                 <img src="../image/library-books.svg" style={{paddingRight: '20px'}}/>
                 Library
-            </a>
+            </a> */}
         </div>
 
         <div class="prf-grid-info">
@@ -422,7 +541,7 @@ class User extends React.Component {
             ) : null}
         </div>
     </div>
-            )
+  ))
         }
 
     </div>

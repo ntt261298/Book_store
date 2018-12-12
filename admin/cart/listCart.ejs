@@ -56,6 +56,9 @@
                                             <td>
                                                 <a href="/admin/cart/<%= item._id %>/view">View</a> |
                                                 <a href="/admin/cart/<%= item._id %>/delete-cart">Delete</a>
+                                                <%if(item.status !== "Delivered") {%>
+                                                  | <a href="/admin/cart/<%= item._id %>/verify-cart">Verify</a>
+                                                <%}%>
                                             </td>
                                         </tr>
                                         <%})%>

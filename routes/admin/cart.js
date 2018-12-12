@@ -33,6 +33,17 @@ router.get('/:id/checkout-cart',checkAdmin, function(req, res, next) {
  	});
 });
 
+router.get('/:id/verify-cart',checkAdmin, function(req, res, next) {
+ 	const id = req.params.id;
+ 	Transaction.findById(id, function(err, data){
+    data.status = "Delivered";
+ 		data.save();
+ 		req.flash('success_msg', 'Add Successful');
+		res.redirect('/admin/cart/'+id+'/view');
+
+ 	});
+});
+
 
 router.get('/:id/delete-cart', checkAdmin, function(req, res, next) {
  	const id = req.params.id;
