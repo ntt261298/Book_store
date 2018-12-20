@@ -537,7 +537,7 @@ class User extends React.Component {
 
             <input class="prf-submit-btn" type="submit" id="prf-submit" name="prf-submit" value="Save" onClick={this.updateUserInforClick.bind(this)}/>
             { message ? (
-              <div className="alert alert-danger mt-2">{message}</div>
+              <div className="alert alert-danger mt-2" style={{height:'50px', width:'60%', marginTop:'30px'}}>{message}</div>
             ) : null}
         </div>
     </div>

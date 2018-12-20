@@ -55,11 +55,14 @@
     results.forEach(rs => {
       if(rs.bookId === exp.bookId) flag = 0;
     })
-    if(flag) {
-      exp.importCount = 0;
-      exp.importPrice = 0;
-      results.push(exp);
-    }
+    setTimeout(() => {
+      if(flag) {
+        exp.importCount = 0;
+        exp.importPrice = 0;
+        results.push(exp);
+      }
+    }, 0);
+
   })
 
 
