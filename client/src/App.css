@@ -48,7 +48,6 @@ transform: rotate(-45deg) translate(7px, -6px); }
   top: 100%;
   width: 100%;
   display: inline-block;
-  z-index: 1;
 }
 .search-results p {
   padding: 10px;

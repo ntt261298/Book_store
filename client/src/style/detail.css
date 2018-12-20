@@ -45,9 +45,12 @@
   background-color: var(--light);
   border-radius: 20px;
   color: var(--gray);
-  align-items: center;
   text-align: center;
   font-weight: bold;
+}
+.option span {
+  display: flex;
+  align-items: center;
 }
 .minus:hover {
   cursor: pointer;

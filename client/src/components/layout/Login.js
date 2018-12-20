@@ -99,7 +99,16 @@ class Login extends React.Component {
       signuprepassword: '',
     })
   }
-
+onSignupnameChange(e) {
+  this.setState({
+    signupname: e.target.value
+  })
+}
+onSignupemailChange(e) {
+  this.setState({
+    signupemail: e.target.value
+  })
+}
   onSignup(e) {
     e.preventDefault();
     this.props.userSignup(this.state.signupusername, this.state.signupname, this.state.signupemail, this.state.signuppassword, this.state.signuprepassword);
@@ -162,12 +171,12 @@ class Login extends React.Component {
                     <input
                       type="text"
                       value={this.state.signupname}
-                      onChange={this.onChange}/>
+                      onChange={this.onSignupnameChange.bind(this)}/>
                   <label>Email: </label>
                     <input
                       type="email"
                       value={this.state.signupemail}
-                      onChange={this.onChange}/>
+                      onChange={this.onSignupemailChange.bind(this)}/>
                   <label>Password: </label>
                     <input
                       type="password"

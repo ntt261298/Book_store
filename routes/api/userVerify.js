@@ -83,7 +83,7 @@ router.post('/forgot', function(req, res, next) {
       var mailOptions = {
         to: user.email,
         from: 'ntt261298@gmail.com',
-        subject: 'Node.js Password Reset',
+        subject: 'NineBook Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://localhost:3000/reset/' + token + '\n\n' +

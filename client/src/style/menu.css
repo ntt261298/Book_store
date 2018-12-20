@@ -34,9 +34,12 @@
 }
 .search img {
   position: absolute;
-  height: 100%;
-  top: 0px;
+  height: 80%;
+  top: 5px;
   right: 0px;
+}
+.search img:hover {
+  cursor: pointer;
 }
 
 .option {
@@ -52,6 +55,9 @@
 }
 .user-img:hover {
   cursor: pointer;
+}
+.cart img {
+  margin-top: 3px;
 }
 .cart:hover {
   cursor: pointer;

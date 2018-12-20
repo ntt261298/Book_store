@@ -321,7 +321,7 @@ class User extends React.Component {
 
         <div class="prf-grid-info">
             <img class="prf-avt2" src="../image/account-circle.svg" />
-            <input class="prf-input" type="text" id="prf-full-name" name="username" onChange={this.handleChange.bind(this)} value={this.state.username}/>
+            <input class="prf-input" type="text" id="prf-full-name" name="username" onChange={this.handleChange.bind(this)} value={userInfor.name}/>
 
 
             <div class="prf-properties">Phone number</div>

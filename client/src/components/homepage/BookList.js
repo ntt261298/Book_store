@@ -28,7 +28,7 @@ class BookList extends React.Component {
     console.log(books);
     return (
       <div className="book-home">
-        { books.slice(0, 16).map(({_id, bookImage, name, author, price, rating, des}, index) => (
+        { books.slice(0, 12).map(({_id, bookImage, name, author, price, rating, des}, index) => (
           <div className={`book-information book${index+1}`} key={_id}>
               <div className="book-img">
                 <a href={'/detail/' + _id}>
