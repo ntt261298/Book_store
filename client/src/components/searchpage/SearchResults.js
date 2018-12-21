@@ -15,10 +15,10 @@ class SearchResults extends React.Component {
   renderStar(rating) {
     let star = [];
     for(let i = 0; i < parseInt(rating); i++) {
-      star.push(<span class="star"><img src="../image/baseline-star_rate-18px.svg" alt=""/></span>)
+      star.push(<span class="star"><img src="http://localhost:3000/image/baseline-star_rate-18px.svg" alt=""/></span>)
     };
     if(rating - parseInt(rating)) {
-      star.push(<span class="star"><img src="../image/baseline-half-star_rate-18px.svg" alt=""/></span>)
+      star.push(<span class="star"><img src="http://localhost:3000/image/baseline-half-star_rate-18px.svg" alt=""/></span>)
     }
     return star;
   }

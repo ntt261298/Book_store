@@ -37,6 +37,13 @@ router.get('/', (req, res) => {
       res.json(data)
     }).limit(10);
   }
+  if(type === 'rating') {
+    Book.find({
+      rating: book
+    }, {}, (err, data) => {
+      res.json(data)
+    }).limit(10);
+  }
 });
 
 

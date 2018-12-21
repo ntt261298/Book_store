@@ -28,6 +28,14 @@ class Navs extends React.Component {
     })
   }
 
+  renderStarStatic(rating) {
+    let star = [];
+    for(let i = 0; i < parseInt(rating); i++) {
+      star.push(<span class="star"><img style={{width: '30px', height: '30px'}} src="http://localhost:3000/image/baseline-star_rate-18px.svg" alt=""/></span>)
+    };
+    return star;
+  }
+
   render() {
     const cate = this.props.book.cate;
     console.log(cate);
@@ -68,6 +76,26 @@ class Navs extends React.Component {
                 </li>
                 <li>
                   <a href={`/search/price/20-30`}>20$ - 30$</a>
+                </li>
+              </ul>
+            </div>
+            <div className={`${this.state.nav}`}>
+              <h2>RATING</h2>
+              <ul>
+                <li>
+                  <a href={`/search/rating/1`}>{this.renderStarStatic(1)}</a>
+                </li>
+                <li>
+                  <a href={`/search/rating/2`}>{this.renderStarStatic(2)}</a>
+                </li>
+                <li>
+                  <a href={`/search/rating/3`}>{this.renderStarStatic(3)}</a>
+                </li>
+                <li>
+                  <a href={`/search/rating/4`}>{this.renderStarStatic(4)}</a>
+                </li>
+                <li>
+                  <a href={`/search/rating/5`}>{this.renderStarStatic(5)}</a>
                 </li>
               </ul>
             </div>
