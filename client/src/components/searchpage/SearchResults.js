@@ -15,10 +15,10 @@ class SearchResults extends React.Component {
   renderStar(rating) {
     let star = [];
     for(let i = 0; i < parseInt(rating); i++) {
-      star.push(<span class="star"><img src="http://localhost:3000/image/baseline-star_rate-18px.svg" alt=""/></span>)
+      star.push(<span class="star"><img src="https://intense-temple-58166.herokuapp.com/image/baseline-star_rate-18px.svg" alt=""/></span>)
     };
     if(rating - parseInt(rating)) {
-      star.push(<span class="star"><img src="http://localhost:3000/image/baseline-half-star_rate-18px.svg" alt=""/></span>)
+      star.push(<span class="star"><img src="https://intense-temple-58166.herokuapp.com/image/baseline-half-star_rate-18px.svg" alt=""/></span>)
     }
     return star;
   }
@@ -31,7 +31,7 @@ class SearchResults extends React.Component {
           <div className={`book-information book${index+1}`} key={_id}>
               <div className="book-img">
                 <a href={'/detail/' + _id}>
-                  <img className="image-book" src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                  <img className="image-book" src={`https://intense-temple-58166.herokuapp.com/uploads/${bookImage}`} alt=""/>
                 </a>
               </div>
               <div className="book-inf">

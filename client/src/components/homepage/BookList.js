@@ -32,7 +32,7 @@ class BookList extends React.Component {
           <div className={`book-information book${index+1}`} key={_id}>
               <div className="book-img">
                 <a href={'/detail/' + _id}>
-                  <img className="image-book" src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                  <img className="image-book" src={`https://intense-temple-58166.herokuapp.com/${bookImage}`} alt=""/>
                 </a>
               </div>
               <div className="book-inf">

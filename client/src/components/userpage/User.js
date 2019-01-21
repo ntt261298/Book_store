@@ -250,7 +250,7 @@ class User extends React.Component {
                     <div class={`list-detail-item-${index+1}`}>
                         <div class="od-product-item">
                             <div className="book-img-cart">
-                              <img src={`http://localhost:5000/uploads/${detail.bookImage}`}></img>
+                              <img src={`https://intense-temple-58166.herokuapp.com/uploads/${detail.bookImage}`}></img>
                             </div>
                             <div className="book-content-cart">
                               <h4>{detail.name }</h4>

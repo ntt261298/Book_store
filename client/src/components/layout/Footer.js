@@ -19,36 +19,36 @@ export default class Footer extends React.Component {
       </div>
       <div className="payment">
         <h3>Payment</h3>
-        <img src="http://localhost:3000/image/icon visa.svg" alt=""/>
-        <img src="http://localhost:3000/image/credit-card.svg" alt=""/>
-        <img src="http://localhost:3000/image/bitcoin.svg" alt=""/>
-        <img src="http://localhost:3000/image/cast-multiple.svg" alt=""/>
-        <img src="http://localhost:3000/image/internet banking account.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/icon visa.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/credit-card.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/bitcoin.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/cast-multiple.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/internet banking account.svg" alt=""/>
       </div>
       <div className="socials">
         <h3>Socials</h3>
-        <img src="http://localhost:3000/image/facebook.svg" alt=""/>
-        <img src="http://localhost:3000/image/instagram.svg" alt=""/>
-        <img src="http://localhost:3000/image/youtube.svg" alt=""/>
-        <img src="http://localhost:3000/image/twitter.svg" alt=""/>
-        <img src="http://localhost:3000/image/pinterest.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/facebook.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/instagram.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/youtube.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/twitter.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/pinterest.svg" alt=""/>
       </div>
       <div className="download">
         <h3>Download App</h3>
-        <img src="http://localhost:3000/image/play-store.svg" alt=""/>
-          <img src="http://localhost:3000/image/apple.svg" alt=""/>
-          <img src="http://localhost:3000/image/windows.svg" alt=""/>
+        <img src="https://intense-temple-58166.herokuapp.com/image/play-store.svg" alt=""/>
+          <img src="https://intense-temple-58166.herokuapp.com/image/apple.svg" alt=""/>
+          <img src="https://intense-temple-58166.herokuapp.com/image/windows.svg" alt=""/>
         </div>
         <div className="contact">
           <h3>Contact</h3>
           <div>
-            <img src="http://localhost:3000/image/gmail.svg" alt=""/><span>/NineBook</span>
+            <img src="https://intense-temple-58166.herokuapp.com/image/gmail.svg" alt=""/><span>/NineBook</span>
           </div>
           <div>
-            <img src="http://localhost:3000/image/phone.svg" alt=""/><span>0999.999.999</span>
+            <img src="https://intense-temple-58166.herokuapp.com/image/phone.svg" alt=""/><span>0999.999.999</span>
           </div>
           <div>
-            <img src="http://localhost:3000/image/baseline-place-24px.svg" alt=""/><span>69 Giải Phóng, Hà Nội</span>
+            <img src="https://intense-temple-58166.herokuapp.com/image/baseline-place-24px.svg" alt=""/><span>69 Giải Phóng, Hà Nội</span>
           </div>
         </div>
         <div className="feedback">

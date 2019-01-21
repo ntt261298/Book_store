@@ -269,9 +269,9 @@ class BookDetail extends React.Component {
               <div class="book-infor">
                 <div class="book-slide">
                   {this.state.active1 ? (
-                    <img class="image-slide" style={{textAlign: 'center'}} src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                    <img class="image-slide" style={{textAlign: 'center'}} src={`https://intense-temple-58166.herokuapp.com/uploads/${bookImage}`} alt=""/>
                   ) : (
-                    <img class="image-slide" style={{textAlign: 'center'}} src={`http://localhost:5000/uploads/${contentImage}`} alt=""/>
+                    <img class="image-slide" style={{textAlign: 'center'}} src={`https://intense-temple-58166.herokuapp.com/uploads/${contentImage}`} alt=""/>
                   )}
                   <div class="circle">
                     <span class={`${this.state.active1} circle-slide`}  onClick={this.active1.bind(this)}></span>

@@ -31,7 +31,7 @@ class Navs extends React.Component {
   renderStarStatic(rating) {
     let star = [];
     for(let i = 0; i < parseInt(rating); i++) {
-      star.push(<span class="star"><img style={{width: '30px', height: '30px'}} src="http://localhost:3000/image/baseline-star_rate-18px.svg" alt=""/></span>)
+      star.push(<span class="star"><img style={{width: '30px', height: '30px'}} src="https://intense-temple-58166.herokuapp.com/image/baseline-star_rate-18px.svg" alt=""/></span>)
     };
     return star;
   }
