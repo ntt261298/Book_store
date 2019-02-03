@@ -469,7 +469,7 @@ class BookDetail extends React.Component {
                         books.slice(0, 4).map(({_id, name, bookImage, rating, price}, index) => (
                           <div class={`book book-${index + 1}`}>
                             <a href={'/detail/' + _id}>
-                              <img style={{height: '200px'}} src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                              <img style={{height: '200px'}} src={`https://intense-temple-58166.herokuapp.com/uploads/${bookImage}`} alt=""/>
                             </a>
                             <h4 style={{fontSize: '16px', textAlign: 'left'}}>{ name }</h4>
                             {

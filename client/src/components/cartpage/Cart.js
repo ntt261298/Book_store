@@ -72,7 +72,7 @@ class Cart extends React.Component {
           { allcart.map(({id, name, author, bookImage, rating, price, count}, index) => (
             <div className={`product-cart product-cart-${index + 1}`}>
               <div className="book-img-cart">
-                <img src={`http://localhost:5000/uploads/${bookImage}`}></img>
+                <img src={`https://intense-temple-58166.herokuapp.com/uploads/${bookImage}`}></img>
               </div>
               <div className="book-content-cart">
                 <h4>{name }</h4>
@@ -107,7 +107,7 @@ class Cart extends React.Component {
                     books.slice(0, 4).map(({_id, name, bookImage, rating, price}, index) => (
                       <div class={`book book-${index + 1}`}>
                         <a href={'/detail/' + _id}>
-                          <img style={{height: '150px'}} src={`http://localhost:5000/uploads/${bookImage}`} alt=""/>
+                          <img style={{height: '150px'}} src={`https://intense-temple-58166.herokuapp.com/uploads/${bookImage}`} alt=""/>
                         </a>
                         <h4 style={{fontSize: '16px', textAlign: 'left'}}>{ name }</h4>
                         {
